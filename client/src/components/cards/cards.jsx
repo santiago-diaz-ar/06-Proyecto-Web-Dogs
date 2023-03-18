@@ -1,11 +1,19 @@
 import Card from "../card/card";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { getDogs } from "../../reducer/actions";
 
-const Cards = ({ dogs, onClose }) => {
+const Cards = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDogs());
+  }, []);
+
+  const dogs = useSelector((state) => state.dogs);
+
   return (
     <div>
-      {dogs.map(({ id, image, name, temperaments, weight }) => {
+      {dogs?.map(({ id, image, name, temperaments, weight }) => {
         return (
           <Card
             key={id}
@@ -13,8 +21,7 @@ const Cards = ({ dogs, onClose }) => {
             name={name}
             temperaments={temperaments}
             weight={weight}
-            image={image}
-            onClose={() => onClose(id)}
+            /*  image={image} */
           />
         );
       })}

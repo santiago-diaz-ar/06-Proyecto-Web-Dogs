@@ -1,9 +1,9 @@
 import Search from "../searchbar/searchbar";
 
-const Nav = ({ onSearch }) => {
+const Nav = ({ onSearch, onClose, dogs }) => {
   return (
     <div>
-      <Search onSearch={onSearch} />
+      <Search onSearch={onSearch} onclose={onClose} dogs={dogs} />
     </div>
   );
 };

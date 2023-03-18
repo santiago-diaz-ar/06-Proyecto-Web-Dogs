@@ -1,4 +1,4 @@
-import { ORDER, GET_ALL_GODS } from "../reducer/types";
+import { GET_DOGS } from "../reducer/types";
 
 const initialState = {
   dogs: [],
@@ -6,14 +6,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_ALL_GODS:
+    case GET_DOGS:
       return {
         ...state,
         dogs: payload,
       };
-
-    case ORDER:
-      break;
 
     default:
       return {

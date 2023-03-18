@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Search = ({ onSearch }) => {
   const [dog, setDog] = useState("");
@@ -10,7 +11,9 @@ const Search = ({ onSearch }) => {
   return (
     <div>
       <input type="search" value={dog} onChange={handleChange} />
-      <button onClick={() => onSearch(dog)}>buscar</button>
+      <Link to="searchDetail">
+        <button onClick={() => onSearch(dog)}>buscar</button>
+      </Link>
     </div>
   );
 };

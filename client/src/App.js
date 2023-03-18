@@ -6,6 +6,7 @@ import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";
 import Detail from "./components/detail/detail.jsx";
 import Form from "./components/form/Form";
+import Searchdetail from "./components/searchbar/searchdetail";
 
 function App() {
   const [dogs, setDogs] = useState([]);
@@ -18,9 +19,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          return setDogs(() => [...dogs, ...data]);
+          return setDogs(() => [...data]);
         } else {
-          window.alert("no hay peritos con ese nombre");
+          setDogs(() => "no hay dog con ese name ");
         }
       });
   };
@@ -36,9 +37,16 @@ function App() {
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Cards dogs={dogs} onClose={onClose} />} />
+        <Route
+          path="/home"
+          element={<Cards /* dogs={dogs} onClose={onClose} */ />}
+        />
         <Route path="/detalle/:id" element={<Detail />} />
         <Route path="/form" element={<Form />} />
+        <Route
+          path="/searchDetail"
+          element={<Searchdetail dogs={dogs} onClose={onClose} />}
+        />
       </Routes>
     </div>
   );
