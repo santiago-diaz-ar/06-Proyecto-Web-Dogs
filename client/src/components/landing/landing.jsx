@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
     <div>
       <h1>RUTA LANDING</h1>
-      <NavLink to="/home">
+      <Link to="/home">
         <button>Ingresar</button>
-      </NavLink>
+      </Link>
     </div>
   );
 };

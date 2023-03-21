@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getName } from "../../reducer/actions-types";
 
-const Search = ({ onSearch }) => {
-  const [dog, setDog] = useState("");
-
-  const handleChange = (event) => {
-    setDog(event.target.value);
-  };
+const Searh = () => {
+  const dispatch = useDispatch();
+  const [searchDog, setSearchDog] = useState("");
 
   return (
     <div>
-      <input type="search" value={dog} onChange={handleChange} />
-      <Link to="searchDetail">
-        <button onClick={() => onSearch(dog)}>buscar</button>
-      </Link>
+      <input type="text" />
+      <button></button>
     </div>
   );
 };
 
-export default Search;
+export default Searh;

@@ -14,7 +14,7 @@ const dogAllDB = async () => {
       model: Temper,
       attributes: ["name"],
       through: {
-        attributes: [],
+        attributes: [], //trae mediante los atributos del modelo
       },
     },
   });
@@ -25,7 +25,7 @@ const dogAllApi = async () => {
   const apiDataInfo = api.data.map((dog) => {
     let temperArray = [];
     if (dog.temperament) {
-      temperArray = dog.temperament.split(", ");
+      temperArray = dog.temperament.split(", "); //retorno el temper en un arr
     }
     let heightArr = [];
     if (dog.height.metric) {
@@ -51,11 +51,13 @@ const dogAllApi = async () => {
 const dogDbApi = async () => {
   const dogsDb = await dogAllDB();
   const dogsApi = await dogAllApi();
+  //tambien lo puedo hacer con un concat
   const dogsAllDbApi = [...dogsDb, ...dogsApi];
   return dogsAllDbApi;
 };
 
 rootRouter.get("/", async (req, res) => {
+  //esta ruta la uso para dos rutas la de allDogs y la del name
   const { name } = req.query;
   const dogsAll = await dogDbApi();
   if (name) {
@@ -73,6 +75,7 @@ rootRouter.get("/", async (req, res) => {
 });
 
 rootRouter.get("/:idRaza", async (req, res) => {
+  //trae un dog por su id
   const { idRaza } = req.params;
   const dogsAll = await dogDbApi();
   const dog = dogsAll.filter((dog) => dog.id == idRaza);
@@ -95,11 +98,13 @@ rootRouter.post("/", async (req, res) => {
     image,
   } = req.body;
 
+  //total altura
   const AllHeight = [];
   AllHeight.push(max_height, min_height);
+  //total peso
   const AllWeight = [];
   AllWeight.push(max_weight, min_weight);
-
+  //creacion del dog en la db
   const dog = await Dog.create({
     name,
     height: AllHeight,

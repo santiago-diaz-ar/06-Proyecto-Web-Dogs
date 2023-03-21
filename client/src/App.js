@@ -1,52 +1,18 @@
 import "./App.css";
-import { Route, Routes, useLocation } from "react-router-dom";
-import { useState } from "react";
-import Cards from "./components/cards/cards";
-import Landing from "./components/landing/landing";
-import Nav from "./components/nav/nav";
-import Detail from "./components/detail/detail.jsx";
-import Form from "./components/form/Form";
-import Searchdetail from "./components/searchbar/searchdetail";
+import { Route, Routes } from "react-router-dom";
+import Landing from "./components/Landing/Landing.jsx";
+import Home from "./components/Home/Home.jsx";
+import Detail from "./components/Form/Form.jsx";
+import Form from "./components/Form/Form.jsx";
 
 function App() {
-  const [dogs, setDogs] = useState([]);
-
-  const onSearch = (dog) => {
-    if (!dog) {
-      return "cancelo todo para que no me traiga todos los perritos ya que lo traigo por query";
-    }
-    fetch(`http://localhost:3001/dogs?name=${dog}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          return setDogs(() => [...data]);
-        } else {
-          setDogs(() => "no hay dog con ese name ");
-        }
-      });
-  };
-
-  const onClose = (id) => {
-    setDogs(dogs.filter((dog) => dog.id !== id));
-  };
-
-  const location = useLocation();
-
   return (
     <div className="App">
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route
-          path="/home"
-          element={<Cards /* dogs={dogs} onClose={onClose} */ />}
-        />
-        <Route path="/detalle/:id" element={<Detail />} />
-        <Route path="/form" element={<Form />} />
-        <Route
-          path="/searchDetail"
-          element={<Searchdetail dogs={dogs} onClose={onClose} />}
-        />
+        <Route path="/home" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route exact path="/dog" element={<Form />} />
       </Routes>
     </div>
   );
