@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/Searchbar";
 import Card from "../Card/Card";
 import Paginate from "../Paginate/Paginate";
 import {
@@ -88,7 +88,7 @@ const Home = () => {
                 Temperaments
               </option>
               <option value="Todos">Todos</option>
-              {allTempers?.map((temp) => (
+              {allTempers.map((temp) => (
                 <option value={temp.name} key={temp.id}>
                   {temp.name}
                 </option>
@@ -107,13 +107,14 @@ const Home = () => {
 
       <div>
         <div>
-          {perrosActual?.map((dog) => {
+          {perrosActual.map((dog) => {
             return (
               <div>
-                <Link to={`/detail/${dog.id}`}>
+                {/* <Link to={`/detail/${dog.id}`}> */}
                   {
                     <Card
                       key={dog.id}
+                      id={dog.id}
                       image={dog.image}
                       name={dog.name}
                       temperaments={
@@ -124,7 +125,7 @@ const Home = () => {
                       }
                     />
                   }
-                </Link>
+                {/* </Link> */}
               </div>
             );
           })}

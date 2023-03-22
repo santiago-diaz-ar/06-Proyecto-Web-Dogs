@@ -1,13 +1,3 @@
-import {
-  GET_ALL_DOGS,
-  GET_TEMPER,
-  GET_DETAIL,
-  GET_FILTER_TEMPER,
-  GET_DOG,
-  ORDER_BY_NAME,
-  ORDER_BY_WEIGHT,
-} from "../reducer/actions-types";
-
 const initialState = {
   dogs: [],
   detail: [],
@@ -17,7 +7,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_ALL_DOGS:
+    case "GET_ALL_DOGS":
       payload.forEach((dog) => {
         if (!dog.temperaments[0]) {
           dog.temperaments = "no hay temperamentos"; // si no hay temper les agrego el message adecuado
@@ -29,14 +19,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allDogs: payload,
       };
 
-    case GET_TEMPER:
+    case "GET_TEMPER":
       const limpiarTemper = payload.filter((temper) => temper.name !== ""); //elimino tempers que tiene el name vacio
       return {
         ...state,
         temperaments: limpiarTemper,
       };
 
-    case GET_FILTER_TEMPER:
+    case "GET_FILTER_TEMPER":
       const allDogs = state.allDogs;
       let filterDogs = [];
       if (payload === "todos") {
@@ -54,13 +44,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         dogs: filterDogs,
       };
 
-    case GET_DOG:
+    case "GET_DOG":
       return {
         ...state,
         dogs: payload,
       };
 
-    case ORDER_BY_NAME:
+    case "ORDER_BY_NAME":
       const ordenarName =
         payload === "A-Z"
           ? state.allDogs.sort((a, b) => {
@@ -86,7 +76,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         dogs: ordenarName,
       };
 
-    case ORDER_BY_WEIGHT:
+    case "ORDER_BY_WEIGHT":
       const ordenarWeight =
         payload === "min_weight"
           ? state.allDogs.sort((a, b) => {
@@ -112,7 +102,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         dogs: ordenarWeight,
       };
 
-    case GET_DETAIL:
+    case "GET_DETAIL":
       return {
         ...state,
         detail: payload,

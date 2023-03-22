@@ -1,7 +1,7 @@
 const Paginate = ({ perrosPorPagina, allDogs, paginado }) => {
   const pageNumbers = [];
 
-  for (let i = 0; i <= Math.ceil(allDogs / perrosPorPagina).length; i++) {
+  for (let i = 1; i <= Math.ceil(allDogs / perrosPorPagina); i++) {
     //cantidad de elementos totales, dividido limite de elementos por pagina
     pageNumbers.push(i);
   }
@@ -10,11 +10,11 @@ const Paginate = ({ perrosPorPagina, allDogs, paginado }) => {
     <nav>
       <ul>
         {pageNumbers &&
-          pageNumbers.map((number) => {
+          pageNumbers.map((number) => (
             <li onClick={() => paginado(number)} key={number}>
               <button>{number}</button>
-            </li>;
-          })}
+            </li>
+          ))}
       </ul>
     </nav>
   );
