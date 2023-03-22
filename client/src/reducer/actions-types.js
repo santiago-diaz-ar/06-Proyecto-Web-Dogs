@@ -52,7 +52,7 @@ export const OrderByWeight = (order) => {
 export const getDetail = (id) => {
   const url = `http://localhost:3001/dogs/${id}`;
   return async function (dispatch) {
-    const dataDetail = (await axios.get(url)).data;
-    return dispatch({ type: GET_DETAIL, payload: dataDetail });
+    const detail = (await axios.get(url)).data;
+    return dispatch({ type: GET_DETAIL, payload: detail });
   };
 };

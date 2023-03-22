@@ -1,7 +1,7 @@
 const Form = () => {
   return (
     <div>
-      <h1>Form en desarrollo</h1>
+      <h1>En desarrollo Form</h1>
     </div>
   );
 };

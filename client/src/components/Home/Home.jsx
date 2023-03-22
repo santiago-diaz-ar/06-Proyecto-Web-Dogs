@@ -32,6 +32,8 @@ const Home = () => {
 
   const [order, setOrder] = useState("");
 
+  console.log(order);
+
   useEffect(() => {
     dispatch(getAllDogs());
     dispatch(getTemper());

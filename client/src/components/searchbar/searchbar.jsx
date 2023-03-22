@@ -6,10 +6,20 @@ const Searh = () => {
   const dispatch = useDispatch();
   const [searchDog, setSearchDog] = useState("");
 
+  const handleInput = (event) => {
+    event.preventDefault();
+    setSearchDog(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(getName(searchDog));
+  };
+
   return (
     <div>
-      <input type="text" />
-      <button></button>
+      <input type="text" onChange={handleInput} placeholder="Name Dog" />
+      <button onClick={handleSubmit}>Buscar</button>
     </div>
   );
 };

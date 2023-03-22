@@ -113,13 +113,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case GET_DETAIL:
-      let details = payload;
-      if (!details[0].temperaments[0]) {
-        details[0].temperaments[0] = "no hay temperamentos";
-      }
       return {
         ...state,
-        details: details,
+        detail: payload,
       };
 
     default:
