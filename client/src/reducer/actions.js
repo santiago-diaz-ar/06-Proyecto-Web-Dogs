@@ -59,10 +59,3 @@ export const getDetail = (id) => {
     return dispatch({ type: GET_DETAIL, payload: detail });
   };
 };
-
-export const postDog = (form) => {
-  return async function () {
-    const data = await axios.post("/dogs", form);
-    return data;
-  };
-};

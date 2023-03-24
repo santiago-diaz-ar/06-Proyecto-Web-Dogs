@@ -1,7 +1,8 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemper, postDog } from "../../reducer/actions";
+import { getTemper } from "../../reducer/actions";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -24,38 +25,6 @@ const Form = () => {
     temperaments: [],
   });
 
-  useEffect(() => {
-    if (
-      form.name.length > 0 &&
-      form.max_height > 0 &&
-      form.min_height > 0 &&
-      form.max_weight > 0 &&
-      form.min_weight > 0 &&
-      form.life_span > 0 &&
-      form.image > 0
-    ) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  }, [form, setButton]);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(postDog(form));
-    alert("Perro creado con exito en la db");
-    setForm({
-      name: "",
-      max_height: "",
-      min_height: "",
-      max_weight: "",
-      min_weight: "",
-      life_span: "",
-      image: "",
-      temperaments: [],
-    });
-  };
-
   const handleChange = (event) => {
     setForm({
       ...form,
@@ -77,6 +46,22 @@ const Form = () => {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await axios.post("/dogs", form);
+    alert("Perro creado con exito en la db agrega uno nuevo");
+    setForm({
+      name: "",
+      max_height: "",
+      min_height: "",
+      max_weight: "",
+      min_weight: "",
+      life_span: "",
+      image: "",
+      temperaments: [],
+    });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -92,7 +77,7 @@ const Form = () => {
         <input
           type="text"
           name="name"
-          value={form?.name}
+          /* value={form?.name} */
           onChange={(event) => handleChange(event)}
           placeholder="Nombre de raza de perro"
         />
@@ -101,9 +86,9 @@ const Form = () => {
         <input
           type="text"
           name="max_height"
-          value={form?.max_height}
+          /* value={form?.max_height} */
           onChange={(e) => handleChange(e)}
-          placeholder="Altura maxima del perro"
+          placeholder="Altura maxima del perro(mts)"
         />
         <hr />
 
@@ -111,8 +96,8 @@ const Form = () => {
           type="text"
           name="min_height"
           onChange={handleChange}
-          value={form?.min_height}
-          placeholder="Altura minima del perro"
+          /* value={form?.min_height} */
+          placeholder="Altura minima del perro(mts)"
         />
         <hr />
 
@@ -120,8 +105,8 @@ const Form = () => {
           type="text"
           name="max_weight"
           onChange={(event) => handleChange(event)}
-          value={form?.max_weight}
-          placeholder="Peso maximo de perro"
+          /* value={form?.max_weight} */
+          placeholder="Peso maximo de perro(kg)"
         />
         <hr />
 
@@ -129,8 +114,8 @@ const Form = () => {
           type="text"
           name="min_weight"
           onChange={handleChange}
-          value={form?.min_weight}
-          placeholder="Peso minimo del perro"
+          /* value={form?.min_weight} */
+          placeholder="Peso minimo del perro(kg)"
         />
         <hr />
 
@@ -138,22 +123,22 @@ const Form = () => {
           type="text"
           name="life_span"
           onChange={handleChange}
-          value={form?.life_span}
-          placeholder="Esperanza de vida del perro"
+          /* value={form?.life_span} */
+          placeholder="Esperanza de vida del perro(años)"
         />
         <hr />
 
         <input
           type="text"
           name="image"
-          value={form?.image}
+          /* value={form?.image} */
           onChange={(e) => handleChange(e)}
           placeholder="Url de imagen del perro"
         />
         <hr />
 
         <select onChange={handleSelect}>
-          <option defaultValue="">temperamentos</option>
+          <option>temperamentos</option>
           {temperaments?.map((temper) => (
             <option key={temper.id} value={temper.name}>
               {temper.name}
@@ -161,13 +146,13 @@ const Form = () => {
           ))}
         </select>
         <hr />
-        <button type="submit" disabled={button} form="form">
-          Agregar
-        </button>
+        <div>
+          <button type="submit">Agregar</button>
+        </div>
       </form>
       <hr />
 
-      <div>Temperamentos agregados al nuevo perro</div>
+      <h2>Lista de temper agregados</h2>
 
       <div>
         {form?.temperaments.map((temper) => (
