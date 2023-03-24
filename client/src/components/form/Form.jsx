@@ -166,6 +166,9 @@ const Form = () => {
         </button>
       </form>
       <hr />
+
+      <div>Temperamentos agregados al nuevo perro</div>
+
       <div>
         {form?.temperaments.map((temper) => (
           <div key={temper} onClick={() => handleDelete(temper)}>
