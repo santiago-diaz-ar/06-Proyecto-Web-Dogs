@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetail } from "../../reducer/actions-types";
+import { getDetail } from "../../reducer/actions";
 import { Link } from "react-router-dom";
 
 const Detail = () => {

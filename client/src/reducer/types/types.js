@@ -4,4 +4,4 @@ export const GET_FILTER_TEMPER = "GET_FILTER_TEMPER"; //Filtrado por temperament
 export const GET_DOG = "GET_DOGS"; //Raza existente del api o creada por nosotros
 export const ORDER_BY_NAME = "ORDER_BY_NAME"; //el orden alfabético
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT"; //peso del perro
-export const GET_DETAIL = "GET_DETAIL"; // detalle del perro
+export const GET_DETAIL = "GET_DETAIL"; // detalle del perros

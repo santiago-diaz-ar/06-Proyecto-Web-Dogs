@@ -7,6 +7,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
   GET_DETAIL,
+  POST_DOG,
 } from "./types/types";
 
 export const getAllDogs = () => {
@@ -56,5 +57,12 @@ export const getDetail = (id) => {
   return async function (dispatch) {
     const detail = (await axios.get(url)).data;
     return dispatch({ type: GET_DETAIL, payload: detail });
+  };
+};
+
+export const postDog = (form) => {
+  return async function () {
+    const data = await axios.post("/dogs", form);
+    return data;
   };
 };

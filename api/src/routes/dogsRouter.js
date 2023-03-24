@@ -123,7 +123,9 @@ rootRouter.post("/", async (req, res) => {
 
   dog.addTemper(asociatedTemper);
 
-  return res.status(201).send(dog);
+  return res
+    .status(201)
+    .send("Raza de perro creado con exito en la base de datos");
 });
 
 module.exports = rootRouter;

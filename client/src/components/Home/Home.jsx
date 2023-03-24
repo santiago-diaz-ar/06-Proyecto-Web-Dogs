@@ -10,7 +10,7 @@ import {
   filterByTemperament,
   OrderbyName,
   OrderByWeight,
-} from "../../reducer/actions-types";
+} from "../../reducer/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Home = () => {
   const perrosPorPagina = 8;
   const ultimoIndice = paginaActual * perrosPorPagina;
   const primerIndice = ultimoIndice - perrosPorPagina;
-  const perrosActual = allDogs.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
+  const perrosActual = allDogs?.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
 
   //console.log(perrosActual); //debe mostrar 8 dogs en arr de obj
 
@@ -68,27 +68,21 @@ const Home = () => {
 
           <div>
             <select onChange={handlerOrderByName}>
-              <option disabled selected defaultValue>
-                orden Alfabetico
-              </option>
+              <option defaultValue="">orden Alfabetico</option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
 
             <select onChange={handlerOrderByWeight}>
-              <option disabled selected defaultValue>
-                Filtrar por peso
-              </option>
+              <option defaultValue="">Filtrar por peso</option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
             <select onChange={handlerFilterByTemper}>
-              <option disabled selected defaultValue>
-                Temperaments
-              </option>
+              <option defaultValue="">Temperaments</option>
               <option value="Todos">Todos</option>
-              {allTempers.map((temp) => (
+              {allTempers?.map((temp) => (
                 <option value={temp.name} key={temp.id}>
                   {temp.name}
                 </option>
@@ -107,25 +101,23 @@ const Home = () => {
 
       <div>
         <div>
-          {perrosActual.map((dog) => {
+          {perrosActual?.map((dog) => {
             return (
               <div>
-                {/* <Link to={`/detail/${dog.id}`}> */}
-                  {
-                    <Card
-                      key={dog.id}
-                      id={dog.id}
-                      image={dog.image}
-                      name={dog.name}
-                      temperaments={
-                        dog.temperaments[0].name
-                          ? dog.temperaments.map((temper) => temper.name)
-                          : dog.temperaments
-                        //POR SI EL TEMPER VIENE EN FORMATO DISTINTO DE LA DB
-                      }
-                    />
-                  }
-                {/* </Link> */}
+                {
+                  <Card
+                    key={dog.id}
+                    id={dog.id}
+                    image={dog.image}
+                    name={dog.name}
+                    temperaments={
+                      dog.temperaments[0].name
+                        ? dog.temperaments.map((temper) => temper.name)
+                        : dog.temperaments
+                      //POR SI EL TEMPER VIENE EN FORMATO DISTINTO DE LA DB
+                    }
+                  />
+                }
               </div>
             );
           })}

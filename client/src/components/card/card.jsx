@@ -8,7 +8,7 @@ const Card = ({ id, image, name, temperaments }) => {
         <h2>{name}</h2>
       </Link>
       <div>
-        {temperaments.map((t) => (
+        {temperaments?.map((t) => (
           <h3 key={t + Math.random}>{t}</h3>
         ))}
       </div>

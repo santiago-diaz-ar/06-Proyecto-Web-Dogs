@@ -29,7 +29,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case "GET_FILTER_TEMPER":
       const allDogs = state.allDogs;
       let filterDogs = [];
-      if (payload === "todos") {
+      if (payload === "Todos") {
         filterDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
@@ -103,9 +103,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case "GET_DETAIL":
+      let Details = payload;
+      if (!Details[0].temperaments[0]) {
+        //agrego string a arr sin elemts dentro
+        Details[0].temperaments = "no hay temperamentos";
+      }
       return {
         ...state,
-        detail: payload,
+        detail: Details,
       };
 
     default:

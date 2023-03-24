@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getName } from "../../reducer/actions-types";
+import { getName } from "../../reducer/actions";
 
 const Searh = () => {
   const dispatch = useDispatch();
