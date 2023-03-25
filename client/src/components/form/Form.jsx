@@ -1,8 +1,8 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemper } from "../../reducer/actions";
+import validate from "./validate";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -12,8 +12,6 @@ const Form = () => {
   }, [dispatch]);
 
   let temperaments = useSelector((state) => state.temperaments);
-
-  const [button, setButton] = useState(true);
 
   const [form, setForm] = useState({
     name: "",
@@ -25,11 +23,26 @@ const Form = () => {
     temperaments: [],
   });
 
+  const [errors, setErrors] = useState({
+    name: "",
+    max_height: "",
+    min_height: "",
+    max_weight: "",
+    min_weight: "",
+    life_span: "",
+  });
+
   const handleChange = (event) => {
     setForm({
       ...form,
       [event.target.name]: event.target.value, // se busca en que input esta escribiendo con la prop name del input, y se modifica el estado
     });
+    setErrors(
+      validate({
+        ...form,
+        [event.target.name]: event.target.value,
+      })
+    );
   };
 
   const handleSelect = (event) => {
@@ -46,9 +59,9 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    await axios.post("/dogs", form);
+    /*  axios.post("http://localhost:3001/dogs", form); */
     alert("Perro creado con exito en la db agrega uno nuevo");
     setForm({
       name: "",
@@ -77,27 +90,29 @@ const Form = () => {
         <input
           type="text"
           name="name"
-          /* value={form?.name} */
+          value={form.name}
           onChange={(event) => handleChange(event)}
-          placeholder="Nombre de raza de perro"
+          placeholder="nombre de perro"
         />
+        {errors.name && <p>Debe tener un name</p>}
         <hr />
 
         <input
           type="text"
           name="max_height"
-          /* value={form?.max_height} */
+          value={form.max_height}
           onChange={(e) => handleChange(e)}
-          placeholder="Altura maxima del perro(mts)"
+          placeholder="Altura max del perro(mts)"
         />
+        {errors.max_height && <p>Debe tener altura maxima el perro</p>}
         <hr />
 
         <input
           type="text"
           name="min_height"
           onChange={handleChange}
-          /* value={form?.min_height} */
-          placeholder="Altura minima del perro(mts)"
+          value={form.min_height}
+          placeholder="Altura min del perro(mts)"
         />
         <hr />
 
@@ -105,8 +120,8 @@ const Form = () => {
           type="text"
           name="max_weight"
           onChange={(event) => handleChange(event)}
-          /* value={form?.max_weight} */
-          placeholder="Peso maximo de perro(kg)"
+          value={form.max_weight}
+          placeholder="Peso max de perro(kg)"
         />
         <hr />
 
@@ -114,8 +129,8 @@ const Form = () => {
           type="text"
           name="min_weight"
           onChange={handleChange}
-          /* value={form?.min_weight} */
-          placeholder="Peso minimo del perro(kg)"
+          value={form.min_weight}
+          placeholder="Peso min del perro(kg)"
         />
         <hr />
 
@@ -123,15 +138,15 @@ const Form = () => {
           type="text"
           name="life_span"
           onChange={handleChange}
-          /* value={form?.life_span} */
-          placeholder="Esperanza de vida del perro(años)"
+          value={form.life_span}
+          placeholder="esperanza de vida(años)"
         />
         <hr />
 
         <input
           type="text"
           name="image"
-          /* value={form?.image} */
+          value={form.image}
           onChange={(e) => handleChange(e)}
           placeholder="Url de imagen del perro"
         />
@@ -155,7 +170,7 @@ const Form = () => {
       <h2>Lista de temper agregados</h2>
 
       <div>
-        {form?.temperaments.map((temper) => (
+        {form.temperaments?.map((temper) => (
           <div key={temper} onClick={() => handleDelete(temper)}>
             <p>{temper}</p>
           </div>
