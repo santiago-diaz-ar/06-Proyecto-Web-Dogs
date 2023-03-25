@@ -94,7 +94,7 @@ const Form = () => {
           onChange={(event) => handleChange(event)}
           placeholder="nombre de perro"
         />
-        {errors.name && <p>Debe tener un name</p>}
+        {errors.name && <p>nombre es requerido</p>}
         <hr />
 
         <input
@@ -104,7 +104,7 @@ const Form = () => {
           onChange={(e) => handleChange(e)}
           placeholder="Altura max del perro(mts)"
         />
-        {errors.max_height && <p>Debe tener altura maxima el perro</p>}
+        {errors.max_height && <p>altura max es requerida</p>}
         <hr />
 
         <input
@@ -114,6 +114,7 @@ const Form = () => {
           value={form.min_height}
           placeholder="Altura min del perro(mts)"
         />
+        {errors.min_height && <p>altura min es requerida</p>}
         <hr />
 
         <input
@@ -123,6 +124,7 @@ const Form = () => {
           value={form.max_weight}
           placeholder="Peso max de perro(kg)"
         />
+        {errors.max_weight && <p>peso max es requerido</p>}
         <hr />
 
         <input
@@ -132,6 +134,7 @@ const Form = () => {
           value={form.min_weight}
           placeholder="Peso min del perro(kg)"
         />
+        {errors.min_weight && <p>peso min es requerido</p>}
         <hr />
 
         <input
@@ -141,6 +144,7 @@ const Form = () => {
           value={form.life_span}
           placeholder="esperanza de vida(años)"
         />
+        {errors.life_span && <p>esperanza de vida es requerida</p>}
         <hr />
 
         <input
