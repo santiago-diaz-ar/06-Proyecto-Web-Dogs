@@ -1,3 +1,4 @@
+import style from "./Home.module.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -57,17 +58,17 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <header>
+    <div >
+      <header className={style.header}>
         <div>
           <Link to="/">
-            <div>Logo</div>
+            <button  className={style.logo}>Inicio</button>
           </Link>
 
           <SearchBar />
 
-          <div>
-            <select onChange={handlerOrderByName}>
+          <div className={style.selects}>
+            <select onChange={handlerOrderByName} className={style.AZ}>
               <option defaultValue="">orden Alfabetico</option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
@@ -90,17 +91,17 @@ const Home = () => {
             </select>
           </div>
         </div>
-        <div>
+        <div className={style.form}>
           <Link to="/dog">
             <button>CREAR PERRO EN BASE DE DATOS</button>
           </Link>
         </div>
       </header>
 
-      <hr />
+     
 
-      <div>
-        <div>
+      <div className={style.container}>
+        <div className={style.tarjeta}>
           {perrosActual?.map((dog) => {
             return (
               <div>
@@ -122,7 +123,7 @@ const Home = () => {
             );
           })}
         </div>
-        <div>
+        <div className={style.paginate}>
           <Paginate
             perrosPorPagina={perrosPorPagina}
             allDogs={allDogs.length}

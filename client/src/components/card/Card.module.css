@@ -1,0 +1,40 @@
+.caja {
+  border: 1px solid blue;
+  background-color: rgba(255, 235, 205, 0.633);
+  font-weight: bold;
+  width: 15rem;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 24rem;
+  border-radius: 2rem;
+  align-items: center;
+}
+.name {
+  border: 1px solid yellow;
+  border-radius: 2rem;
+  color: red;
+}
+.titulo {
+  border: 1px solid green;
+  position: relative;
+  top: 10px;
+  color: blue;
+  font-size: 15px;
+}
+.temper {
+  display: flex;
+  border: 1px solid red;
+  position: relative;
+  top: -5px;
+  font-size: 14px;
+}
+.image {
+  display: flex;
+  border-radius: 100rem;
+  height: 200px;
+  width: 237px;
+  border-radius: 1.5rem;
+  border: 1px solid red;
+}

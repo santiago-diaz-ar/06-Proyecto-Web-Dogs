@@ -1,0 +1,14 @@
+
+.tarjeta {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border: 2px solid coral;
+  background-color: rgba(0, 255, 255, 0.689);
+}
+
+.paginate {
+  border: 2px solid green;
+  display: flex;
+  flex-wrap: wrap;
+}

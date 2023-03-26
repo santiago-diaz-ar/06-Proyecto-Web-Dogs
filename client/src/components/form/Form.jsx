@@ -1,3 +1,5 @@
+import style from "./Form.module.css";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,7 +63,7 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    /*  axios.post("http://localhost:3001/dogs", form); */
+    axios.post("http://localhost:3001/dogs", form);
     alert("Perro creado con exito en la db agrega uno nuevo");
     setForm({
       name: "",
@@ -76,84 +78,77 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className={style.caja}>
       <form onSubmit={handleSubmit}>
-        <hr />
-
         <Link to="/home">
           <button>Home</button>
         </Link>
-        <hr />
-        <h2>Agrega un raza de perro en nuestra base de datos</h2>
-        <hr />
 
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={(event) => handleChange(event)}
-          placeholder="nombre de perro"
-        />
-        {errors.name && <p>nombre es requerido</p>}
-        <hr />
+        <h3>Agrega un raza de perro en nuestra base de datos</h3>
 
-        <input
-          type="text"
-          name="max_height"
-          value={form.max_height}
-          onChange={(e) => handleChange(e)}
-          placeholder="Altura max del perro(mts)"
-        />
-        {errors.max_height && <p>altura max es requerida</p>}
-        <hr />
+        <div className={style.inputs}>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={(event) => handleChange(event)}
+            placeholder="nombre de perro"
+          />
+          {errors.name && <p>nombre es requerido</p>}
 
-        <input
-          type="text"
-          name="min_height"
-          onChange={handleChange}
-          value={form.min_height}
-          placeholder="Altura min del perro(mts)"
-        />
-        {errors.min_height && <p>altura min es requerida</p>}
-        <hr />
+          <input
+            type="text"
+            name="max_height"
+            value={form.max_height}
+            onChange={(e) => handleChange(e)}
+            placeholder="Altura max del perro(mts)"
+          />
+          {errors.max_height && <p>altura max es requerida</p>}
 
-        <input
-          type="text"
-          name="max_weight"
-          onChange={(event) => handleChange(event)}
-          value={form.max_weight}
-          placeholder="Peso max de perro(kg)"
-        />
-        {errors.max_weight && <p>peso max es requerido</p>}
-        <hr />
+          <input
+            type="text"
+            name="min_height"
+            onChange={handleChange}
+            value={form.min_height}
+            placeholder="Altura min del perro(mts)"
+          />
+          {errors.min_height && <p>altura min es requerida</p>}
 
-        <input
-          type="text"
-          name="min_weight"
-          onChange={handleChange}
-          value={form.min_weight}
-          placeholder="Peso min del perro(kg)"
-        />
-        {errors.min_weight && <p>peso min es requerido</p>}
-        <hr />
+          <input
+            type="text"
+            name="max_weight"
+            onChange={(event) => handleChange(event)}
+            value={form.max_weight}
+            placeholder="Peso max de perro(kg)"
+          />
+          {errors.max_weight && <p>peso max es requerido</p>}
 
-        <input
-          type="text"
-          name="life_span"
-          onChange={handleChange}
-          value={form.life_span}
-          placeholder="esperanza de vida(años)"
-        />
-        {errors.life_span && <p>esperanza de vida es requerida</p>}
-        <hr />
+          <input
+            type="text"
+            name="min_weight"
+            onChange={handleChange}
+            value={form.min_weight}
+            placeholder="Peso min del perro(kg)"
+          />
+          {errors.min_weight && <p>peso min es requerido</p>}
 
-        <input
-          type="text"
-          name="image"
-          value={form.image}
-          onChange={(e) => handleChange(e)}
-          placeholder="Url de imagen del perro"
-        />
+          <input
+            type="text"
+            name="life_span"
+            onChange={handleChange}
+            value={form.life_span}
+            placeholder="esperanza de vida(años)"
+          />
+          {errors.life_span && <p>esperanza de vida es requerida</p>}
+
+          <input
+            type="text"
+            name="image"
+            value={form.image}
+            onChange={(e) => handleChange(e)}
+            placeholder="Url de imagen del perro"
+          />
+        </div>
         <hr />
 
         <select onChange={handleSelect}>
@@ -164,22 +159,22 @@ const Form = () => {
             </option>
           ))}
         </select>
-        <hr />
-        <div>
-          <button type="submit">Agregar</button>
-        </div>
+
       </form>
-      <hr />
 
-      <h2>Lista de temper agregados</h2>
+      <h3 className={style.lista}>Lista de temper agregados</h3>
 
-      <div>
+      <div className={style.prueba}>
         {form.temperaments?.map((temper) => (
-          <div key={temper} onClick={() => handleDelete(temper)}>
-            <p>{temper}</p>
+          <div  key={temper} onClick={() => handleDelete(temper)}>
+            <p className={style.addtemper}>{temper+", "}</p>
           </div>
         ))}
       </div>
+
+      <div>
+          <button type="submit">Agregar</button>
+        </div>
     </div>
   );
 };

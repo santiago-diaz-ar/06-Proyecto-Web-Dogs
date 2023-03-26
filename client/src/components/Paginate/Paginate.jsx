@@ -1,3 +1,5 @@
+import style from "./Paginate.module.css";
+
 const Paginate = ({ perrosPorPagina, allDogs, paginado }) => {
   const pageNumbers = [];
 
@@ -7,16 +9,18 @@ const Paginate = ({ perrosPorPagina, allDogs, paginado }) => {
   }
 
   return (
-    <nav>
-      <ul>
-        {pageNumbers &&
-          pageNumbers.map((number) => (
-            <li onClick={() => paginado(number)} key={number}>
-              <button>{number}</button>
-            </li>
-          ))}
-      </ul>
-    </nav>
+    <ul className={style.Ul}>
+      {pageNumbers &&
+        pageNumbers.map((number) => (
+          <div
+            onClick={() => paginado(number)}
+            key={number}
+            className={style.div}
+          >
+            <button className={style.button}>{number}</button>
+          </div>
+        ))}
+    </ul>
   );
 };
 

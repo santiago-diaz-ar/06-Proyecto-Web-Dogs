@@ -1,0 +1,17 @@
+.caja {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+  margin: 1px;
+  min-height: 110rem;
+  align-items: center;
+  background-color: rgba(0, 255, 255, 0.534);
+}
+.image {
+    display: flex;
+    border-radius: 100rem;
+    height: 400px;
+    width: 437px;
+    border-radius: 1.5rem;
+  }
