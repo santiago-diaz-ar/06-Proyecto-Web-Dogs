@@ -1,27 +1,88 @@
-.caja {
+.form {
+  min-height: 60rem;
+  background-image: URL("../../../../../../../../37963.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: aliceblue;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid blue;
-  margin: 1px;
-  min-height: 70rem;
-  background-color:cornsilk;
 }
-.inputs {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-
+.buttonVolver {
+  border: 2px solid chocolate;
+  font-size: 1rem;
+  background-color: chocolate;
+  border-radius: 10px;
+  margin-top: 1.4rem;
 }
-.lista {
-  border: 1px solid green;
+.buttonAgregar {
+  border: 2px solid chocolate;
+  font-size: 1rem;
+  background-color: rgba(255, 183, 0, 0.767);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.agregarRaza {
+  border: 2px solid chocolate;
+  font-size: 1.3rem;
+  background-color: rgba(255, 183, 0, 0.767);
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.827);
+  margin-top: 2rem;
+}
+.name {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+.alturaMax {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.alturaMin {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.pesoMax {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.pesoMin {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.life_span {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.image {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
 }
 .prueba {
-  border: 1px solid red;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
 }
-.addtemper{
-    margin: 1px solid black;
+.lista {
+  border: 2px solid chocolate;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 4px;
+  background-color: tomato;
+  color: black;
 }

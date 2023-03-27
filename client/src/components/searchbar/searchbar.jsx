@@ -1,3 +1,4 @@
+import style from "./SearchBar.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getName } from "../../reducer/actions";
@@ -18,8 +19,8 @@ const Searh = () => {
 
   return (
     <div>
-      <input type="text" onChange={handleInput} placeholder="Name Dog" />
-      <button onClick={handleSubmit}>Buscar</button>
+      <input type="text" onChange={handleInput} placeholder="Name Dog"  className={style.input}/>
+      <button onClick={handleSubmit} className={style.button}>Buscar</button>
     </div>
   );
 };

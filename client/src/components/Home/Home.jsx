@@ -1,5 +1,6 @@
 import style from "./Home.module.css";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../SearchBar/Searchbar";
@@ -58,29 +59,29 @@ const Home = () => {
   };
 
   return (
-    <div >
-      <header className={style.header}>
+    <div>
+      <div className={style.header}>
         <div>
-          <Link to="/">
-            <button  className={style.logo}>Inicio</button>
-          </Link>
+          <NavLink to="/" className={style.inicio}>
+            <button className={style.volver}>Volver</button>
+          </NavLink>
 
           <SearchBar />
 
           <div className={style.selects}>
-            <select onChange={handlerOrderByName} className={style.AZ}>
+            <select onChange={handlerOrderByName} className={style.order}>
               <option defaultValue="">orden Alfabetico</option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
 
-            <select onChange={handlerOrderByWeight}>
+            <select onChange={handlerOrderByWeight} className={style.peso}>
               <option defaultValue="">Filtrar por peso</option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
-            <select onChange={handlerFilterByTemper}>
+            <select onChange={handlerFilterByTemper} className={style.filter}>
               <option defaultValue="">Temperaments</option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp) => (
@@ -92,13 +93,21 @@ const Home = () => {
           </div>
         </div>
         <div className={style.form}>
-          <Link to="/dog">
-            <button>CREAR PERRO EN BASE DE DATOS</button>
-          </Link>
+          <NavLink to="/dog" className={style.LinkForm}>
+            <button className={style.buttonForm}>CREAR PERRO EN BASE DE DATOS</button>
+          </NavLink>
         </div>
-      </header>
+      </div>
 
-     
+      <div className={style.paginate}>
+        <Paginate
+          perrosPorPagina={perrosPorPagina}
+          allDogs={allDogs.length}
+          paginado={
+            paginado
+          } /* el valor del paginado aumenta segun el bucle for del compo paginate */
+        />
+      </div>
 
       <div className={style.container}>
         <div className={style.tarjeta}>
@@ -122,15 +131,6 @@ const Home = () => {
               </div>
             );
           })}
-        </div>
-        <div className={style.paginate}>
-          <Paginate
-            perrosPorPagina={perrosPorPagina}
-            allDogs={allDogs.length}
-            paginado={
-              paginado
-            } /* el valor del paginado aumenta segun el bucle for del compo paginate */
-          />
         </div>
       </div>
     </div>

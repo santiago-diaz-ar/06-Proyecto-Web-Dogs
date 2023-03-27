@@ -16,21 +16,34 @@ const Detail = () => {
   const detail = useSelector((state) => state.detail);
   const details = detail[0]?.temperaments.map((t) => t + ", ");
   return (
-    <div className={style.caja}>
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      <h1>{detail[0]?.name}</h1>
+    <div className={style.container}>
+      <button className={style.buttonVolver}>
+        <Link to="/home">Volver</Link>
+      </button>
+
+      <h1 className={style.name}>{detail[0]?.name}</h1>
+
       <img src={detail[0]?.image} className={style.image} />
-      <h3>Altura:</h3>
-      <div>{detail[0]?.height}</div>
-      <h3>Peso:</h3>
-      <div>{detail[0]?.weight}</div>
-      <h3>Temperamentos:</h3>
-      <div>{details}</div>
-      <h3>Esperanza de vida</h3>
-      <div>{detail[0]?.life_span}</div>
-     
+
+      <h3>
+        <div className={style.altura}>Altura:</div>
+        {detail[0]?.height}
+      </h3>
+
+      <h3>
+        <div className={style.peso}>Peso:</div>
+        {detail[0]?.weight}
+      </h3>
+
+      <h3>
+        <div className={style.temper}>Temperamentos:</div>
+        <div>{details}</div>
+      </h3>
+
+      <h3>
+        <div className={style.life}>Esperanza de vida</div>
+        <div>{detail[0]?.life_span}</div>
+      </h3>
     </div>
   );
 };
