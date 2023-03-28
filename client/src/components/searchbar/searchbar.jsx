@@ -9,7 +9,7 @@ const Searh = () => {
 
   const handleInput = (event) => {
     event.preventDefault();
-    setSearchDog(event.target.value);
+    setSearchDog(event.target.value.trim());
   };
 
   const handleSubmit = (event) => {

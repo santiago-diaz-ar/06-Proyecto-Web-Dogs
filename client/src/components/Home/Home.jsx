@@ -1,5 +1,4 @@
 import style from "./Home.module.css";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -62,9 +61,9 @@ const Home = () => {
     <div>
       <div className={style.header}>
         <div>
-          <NavLink to="/" className={style.inicio}>
-            <button className={style.volver}>Volver</button>
-          </NavLink>
+          <button className={style.volver}>
+            <NavLink to="/">Volver</NavLink>
+          </button>
 
           <SearchBar />
 
@@ -93,9 +92,11 @@ const Home = () => {
           </div>
         </div>
         <div className={style.form}>
-          <NavLink to="/dog" className={style.LinkForm}>
-            <button className={style.buttonForm}>CREAR PERRO EN BASE DE DATOS</button>
-          </NavLink>
+          <button className={style.buttonForm}>
+            <NavLink to="/dog" className={style.LinkForm}>
+              CREAR PERRO EN BASE DE DATOS
+            </NavLink>
+          </button>
         </div>
       </div>
 

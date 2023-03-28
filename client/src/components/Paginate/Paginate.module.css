@@ -15,3 +15,6 @@
   font-size: 1rem;
   border-radius: 7px;
 }
+.button:hover{
+  background-color:rgb(80, 80, 233);
+}

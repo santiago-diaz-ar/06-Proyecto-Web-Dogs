@@ -23,7 +23,10 @@ const Detail = () => {
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
 
-      <img src={detail[0]?.image} className={style.image} />
+      <h3>
+        <div className={style.peso}>Peso:</div>
+        {detail[0]?.weight}
+      </h3>
 
       <h3>
         <div className={style.altura}>Altura:</div>
@@ -31,8 +34,8 @@ const Detail = () => {
       </h3>
 
       <h3>
-        <div className={style.peso}>Peso:</div>
-        {detail[0]?.weight}
+        <div className={style.life}>Esperanza de vida</div>
+        <div>{detail[0]?.life_span}</div>
       </h3>
 
       <h3>
@@ -40,10 +43,7 @@ const Detail = () => {
         <div>{details}</div>
       </h3>
 
-      <h3>
-        <div className={style.life}>Esperanza de vida</div>
-        <div>{detail[0]?.life_span}</div>
-      </h3>
+      <img src={detail[0]?.image} className={style.image} alt="img no disponible"/>
     </div>
   );
 };

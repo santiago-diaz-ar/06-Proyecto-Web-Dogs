@@ -1,20 +1,42 @@
 .cajaMayor {
-  min-height: 70rem;  
+  min-height: 70rem;
   background-image: URL("../image//Black-dog-and-black-background-look_5120x2880.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
 }
-
 .cajaIntermedia {
-  
   min-height: 30rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.titulo {
+  border: 1px solid whitesmoke;
+  background-color: rgba(210, 105, 30, 0.745);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
 .caja {
- 
   color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  border: 1px solid whitesmoke;
+  background-color: rgba(210, 105, 30, 0.789);
+  font-size: 1rem;
+  border-radius: 7px;
+  margin-top: 20px;
+}
+.text {
+  display: flex;
+  align-items: center;
+  background-color: rgba(210, 105, 30, 0.51);
+  border-radius: 7px;
+  flex-wrap: wrap;
+  color: black;
 }
