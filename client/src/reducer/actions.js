@@ -7,7 +7,6 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
   GET_DETAIL,
-  POST_DOG,
 } from "./types/types";
 
 export const getAllDogs = () => {
