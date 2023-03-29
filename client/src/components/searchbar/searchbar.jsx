@@ -3,13 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getName } from "../../reducer/actions";
 
-const Searh = () => {
+const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchDog, setSearchDog] = useState("");
 
   const handleInput = (event) => {
-    event.preventDefault();
-    setSearchDog(event.target.value.trim());
+    setSearchDog(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -19,10 +18,17 @@ const Searh = () => {
 
   return (
     <div>
-      <input type="text" onChange={handleInput} placeholder="Name Dog"  className={style.input}/>
-      <button onClick={handleSubmit} className={style.button}>Buscar</button>
+      <input
+        type="text"
+        onChange={handleInput}
+        placeholder="Name Dog"
+        className={style.input}
+      />
+      <button type="submit" onClick={handleSubmit} className={style.button}>
+        Buscar
+      </button>
     </div>
   );
 };
 
-export default Searh;
+export default SearchBar;

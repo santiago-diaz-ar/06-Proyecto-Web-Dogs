@@ -10,7 +10,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case "GET_ALL_DOGS":
       payload.forEach((dog) => {
         if (!dog.temperaments[0]) {
-          dog.temperaments = "no hay temperamentos"; // si no hay temper les agrego el message adecuado
+          dog.temperaments[0] = "no hay temperamentos"; // si no hay temper les agrego el message adecuado
         }
       });
       return {

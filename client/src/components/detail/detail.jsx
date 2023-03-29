@@ -43,7 +43,7 @@ const Detail = () => {
         <div>{details}</div>
       </h3>
 
-      <img src={detail[0]?.image} className={style.image} alt="img no disponible"/>
+      {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
     </div>
   );
 };

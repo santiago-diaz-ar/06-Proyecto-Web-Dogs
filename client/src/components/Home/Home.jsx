@@ -48,13 +48,13 @@ const Home = () => {
   const handlerOrderByName = (event) => {
     event.preventDefault();
     dispatch(OrderbyName(event.target.value));
-    setOrder(`Ordenado ${event.target.value}`);
+    setOrder(`${event.target.value}`);
   };
 
   const handlerOrderByWeight = (event) => {
     event.preventDefault();
     dispatch(OrderByWeight(event.target.value));
-    setOrder(`Ordenado ${event.target.value}`);
+    setOrder(`${event.target.value}`);
   };
 
   return (
@@ -69,19 +69,25 @@ const Home = () => {
 
           <div className={style.selects}>
             <select onChange={handlerOrderByName} className={style.order}>
-              <option defaultValue="">orden Alfabetico</option>
+              <option disabled defaultValue>
+                orden Alfabetico
+              </option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
 
             <select onChange={handlerOrderByWeight} className={style.peso}>
-              <option defaultValue="">Filtrar por peso</option>
+              <option disabled defaultValue>
+                Filtrar por peso
+              </option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
             <select onChange={handlerFilterByTemper} className={style.filter}>
-              <option defaultValue="">Temperaments</option>
+              <option disabled defaultValue>
+                Temperamentos
+              </option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp) => (
                 <option value={temp.name} key={temp.id}>

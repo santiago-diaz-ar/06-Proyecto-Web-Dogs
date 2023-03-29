@@ -161,16 +161,14 @@ const Form = () => {
       <select onChange={handleSelect} className={style.prueba}>
         <option>temperamentos</option>
         {temperaments?.map((temper) => (
-          <option key={temper.id} value={temper.name} >
+          <option key={temper.id} value={temper.name}>
             {temper.name}
           </option>
         ))}
       </select>
 
-      
-
       <div className={style.prueba}>
-      <h3 className={style.lista}>Lista de temper agregados</h3>
+        <h3 className={style.lista}>Lista de temper agregados</h3>
         {form.temperaments?.map((temper) => (
           <div key={temper} onClick={() => handleDelete(temper)}>
             <h5 className={style.addtemper}>{temper + ", "}</h5>

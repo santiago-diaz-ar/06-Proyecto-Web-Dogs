@@ -8,7 +8,7 @@ const Card = ({ id, image, name, temperaments }) => {
       <Link to={`/detail/${id}`}>
         <h3 className={style.name}>{name}</h3>
       </Link>
-      <img src={image} alt={name} className={style.image} />
+      {/* <img src={image} alt={name} className={style.image} /> */}
 
       <div className={style.titulo}>Temperaments</div>
       <h4 className={style.temper}>{temper}</h4>

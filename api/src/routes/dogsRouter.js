@@ -61,8 +61,8 @@ rootRouter.get("/", async (req, res) => {
   const { name } = req.query;
   const dogsAll = await dogDbApi();
   if (name) {
-    const dog = dogsAll.filter(
-      (dog) => dog.name.toLowerCase() === name.toLowerCase()
+    const dog = dogsAll.filter((dog) =>
+      dog.name.toLowerCase().includes(name.toLowerCase())
     );
     if (dog.length) {
       return res.status(200).send(dog);
