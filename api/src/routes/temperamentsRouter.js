@@ -12,7 +12,10 @@ rootRouter.get("/", async (req, res) => {
   const TemperApi = await axios.get(url);
   const Tempers = TemperApi.data.map((temper) => temper.temperament);
   const TemperArr = Tempers.toString().split(","); //convierto todo en string luego lo coloco en un arr
-  TemperArr.forEach((t) => {
+  //borro los temperamentos que no tengan nada
+  const arreglo = TemperArr.filter((e) => e);
+
+  arreglo.forEach((t) => {
     //trim quito espacion al final y comienzo del string
     const t2 = t.trim();
     //busco si esta no creo, si no esta creo el temper en el modelo Temper
@@ -22,6 +25,7 @@ rootRouter.get("/", async (req, res) => {
   });
 
   const Alltempers = await Temper.findAll();
+
   return res.status(200).send(Alltempers);
 });
 
