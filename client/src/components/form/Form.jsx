@@ -86,7 +86,7 @@ const Form = () => {
       form.min_height.length > 0 &&
       form.max_weight.length > 0 &&
       form.min_weight.length > 0 &&
-      form.life_span.length > 0 
+      form.life_span.length > 0
     )
       setButton(false);
     else {
@@ -119,7 +119,7 @@ const Form = () => {
         name="max_height"
         value={form.max_height}
         onChange={handleChange}
-        placeholder="Altura max del perro(mts)"
+        placeholder="Altura max del perro(cmt)"
         className={style.alturaMax}
       />
       {errors.max_height && <div>altura max es requerida</div>}
@@ -129,7 +129,7 @@ const Form = () => {
         name="min_height"
         onChange={handleChange}
         value={form.min_height}
-        placeholder="Altura min del perro(mts)"
+        placeholder="Altura min del perro(cmt)"
         className={style.alturaMin}
       />
       {errors.min_height && <div>altura min es requerida</div>}
@@ -169,14 +169,16 @@ const Form = () => {
         name="image"
         value={form.image}
         onChange={handleChange}
-        placeholder="Url de imagen del perro"
+        placeholder="Url de imagen(opcional)"
         className={style.image}
       />
 
       <hr />
 
       <select onChange={handleSelect} className={style.prueba}>
-        <option disabled selected>temperamentos</option>
+        <option disabled selected>
+          temperamentos
+        </option>
         {temperaments.map((temper) => (
           <option key={temper.id} value={temper.name}>
             {temper.name}

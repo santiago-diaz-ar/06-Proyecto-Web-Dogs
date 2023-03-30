@@ -10,15 +10,14 @@
   justify-content: space-around;
   min-height: 8.9rem;
 }
-.inicio {
-  position: relative;
-  bottom: 5px;
-}
 .volver {
   border: 2px solid chocolate;
   font-size: 1rem;
   background-color: chocolate;
   border-radius: 10px;
+  position: relative;
+  margin-top: 12px;
+  bottom: 10px
 }
 .selects {
   position: relative;
@@ -48,7 +47,10 @@
 }
 .LinkForm {
   position: relative;
-  top: 3px;
+}
+.form{
+  position: relative;
+  margin-top: 20px;
 }
 .buttonForm {
   font-size: 1rem;
