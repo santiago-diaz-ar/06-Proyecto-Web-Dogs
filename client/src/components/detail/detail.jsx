@@ -25,12 +25,12 @@ const Detail = () => {
 
       <h3>
         <div className={style.peso}>Peso:</div>
-        {detail[0]?.weight}
+        {detail[0]?.weight.map((e) => e + " kilos ")}
       </h3>
 
       <h3>
         <div className={style.altura}>Altura:</div>
-        {detail[0]?.height}
+        {detail[0]?.height.map((e) => e + " cmt ")}
       </h3>
 
       <h3>

@@ -77,6 +77,24 @@ const Form = () => {
     });
   };
 
+  const [button, setButton] = useState(true);
+
+  useEffect(() => {
+    if (
+      form.name.length > 0 &&
+      form.max_height.length > 0 &&
+      form.min_height.length > 0 &&
+      form.max_weight.length > 0 &&
+      form.min_weight.length > 0 &&
+      form.life_span.length > 0 &&
+      form.temperaments.length > 0
+    )
+      setButton(false);
+    else {
+      setButton(true);
+    }
+  }, [form, setButton]);
+
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       <Link to="/home">
@@ -95,7 +113,7 @@ const Form = () => {
         placeholder="nombre de perro"
         className={style.name}
       />
-      {errors.name && <p>nombre es requerido</p>}
+      {errors.name && <div>{errors.name}</div>}
 
       <input
         type="text"
@@ -105,7 +123,7 @@ const Form = () => {
         placeholder="Altura max del perro(mts)"
         className={style.alturaMax}
       />
-      {errors.max_height && <p>altura max es requerida</p>}
+      {errors.max_height && <div>altura max es requerida</div>}
 
       <input
         type="text"
@@ -115,7 +133,7 @@ const Form = () => {
         placeholder="Altura min del perro(mts)"
         className={style.alturaMin}
       />
-      {errors.min_height && <p>altura min es requerida</p>}
+      {errors.min_height && <div>altura min es requerida</div>}
 
       <input
         type="text"
@@ -125,7 +143,7 @@ const Form = () => {
         placeholder="Peso max de perro(kg)"
         className={style.pesoMax}
       />
-      {errors.max_weight && <p>peso max es requerido</p>}
+      {errors.max_weight && <div>peso max es requerido</div>}
 
       <input
         type="text"
@@ -135,7 +153,7 @@ const Form = () => {
         placeholder="Peso min del perro(kg)"
         className={style.pesoMin}
       />
-      {errors.min_weight && <p>peso min es requerido</p>}
+      {errors.min_weight && <div>peso min es requerido</div>}
 
       <input
         type="text"
@@ -145,7 +163,7 @@ const Form = () => {
         placeholder="esperanza de vida(años)"
         className={style.life_span}
       />
-      {errors.life_span && <p>esperanza de vida es requerida</p>}
+      {errors.life_span && <div>esperanza de vida es requerida</div>}
 
       <input
         type="text"
@@ -169,13 +187,13 @@ const Form = () => {
 
       <div className={style.prueba}>
         <h3 className={style.lista}>Lista de temper agregados</h3>
-        {form.temperaments?.map((temper) => (
+        {form.temperaments.map((temper) => (
           <div key={temper} onClick={() => handleDelete(temper)}>
             <h5 className={style.addtemper}>{temper + ", "}</h5>
           </div>
         ))}
       </div>
-      <button type="submit" className={style.buttonAgregar}>
+      <button type="submit" className={style.buttonAgregar} disabled={button}>
         Agregar
       </button>
     </form>

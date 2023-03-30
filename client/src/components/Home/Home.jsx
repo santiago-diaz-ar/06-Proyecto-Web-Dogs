@@ -90,7 +90,7 @@ const Home = () => {
               </option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp) => (
-                <option value={temp.name} key={temp.id}>
+                <option value={temp.name} key={temp.name}>
                   {temp.name}
                 </option>
               ))}

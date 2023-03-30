@@ -10,16 +10,16 @@ import {
 } from "./types/types";
 
 export const getAllDogs = () => {
-  const url = "http://localhost:3001/dogs";
   return async function (dispatch) {
+    const url = "http://localhost:3001/dogs";
     const data = (await axios.get(url)).data;
     return dispatch({ type: GET_ALL_DOGS, payload: data });
   };
 };
 
 export const getTemper = () => {
-  const url = "http://localhost:3001/temperaments";
   return async function (dispatch) {
+    const url = "http://localhost:3001/temperaments";
     const dataTemper = (await axios.get(url)).data;
     return dispatch({ type: GET_TEMPER, payload: dataTemper });
   };
@@ -32,9 +32,9 @@ export const filterByTemperament = (filter) => {
 };
 
 export const getName = (name) => {
-  const url = `http://localhost:3001/dogs?name=${name}`;
   return async function (dispatch) {
-    const dataName = (await axios(url)).data;
+    const url = `http://localhost:3001/dogs?name=${name}`;
+    const dataName = (await axios.get(url)).data;
     return dispatch({ type: GET_DOG, payload: dataName });
   };
 };
@@ -52,8 +52,8 @@ export const OrderByWeight = (order) => {
 };
 
 export const getDetail = (id) => {
-  const url = `http://localhost:3001/dogs/${id}`;
   return async function (dispatch) {
+    const url = `http://localhost:3001/dogs/${id}`;
     const detail = (await axios.get(url)).data;
     return dispatch({ type: GET_DETAIL, payload: detail });
   };
