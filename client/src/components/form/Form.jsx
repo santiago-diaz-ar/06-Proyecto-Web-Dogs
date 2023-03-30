@@ -86,8 +86,7 @@ const Form = () => {
       form.min_height.length > 0 &&
       form.max_weight.length > 0 &&
       form.min_weight.length > 0 &&
-      form.life_span.length > 0 &&
-      form.temperaments.length > 0
+      form.life_span.length > 0 
     )
       setButton(false);
     else {
@@ -109,7 +108,7 @@ const Form = () => {
         type="text"
         name="name"
         value={form.name}
-        onChange={(event) => handleChange(event)}
+        onChange={handleChange}
         placeholder="nombre de perro"
         className={style.name}
       />
@@ -119,7 +118,7 @@ const Form = () => {
         type="text"
         name="max_height"
         value={form.max_height}
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         placeholder="Altura max del perro(mts)"
         className={style.alturaMax}
       />
@@ -138,7 +137,7 @@ const Form = () => {
       <input
         type="text"
         name="max_weight"
-        onChange={(event) => handleChange(event)}
+        onChange={handleChange}
         value={form.max_weight}
         placeholder="Peso max de perro(kg)"
         className={style.pesoMax}
@@ -169,7 +168,7 @@ const Form = () => {
         type="text"
         name="image"
         value={form.image}
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         placeholder="Url de imagen del perro"
         className={style.image}
       />
@@ -177,8 +176,8 @@ const Form = () => {
       <hr />
 
       <select onChange={handleSelect} className={style.prueba}>
-        <option>temperamentos</option>
-        {temperaments?.map((temper) => (
+        <option disabled selected>temperamentos</option>
+        {temperaments.map((temper) => (
           <option key={temper.id} value={temper.name}>
             {temper.name}
           </option>

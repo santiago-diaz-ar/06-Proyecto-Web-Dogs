@@ -2,7 +2,7 @@ require("dotenv").config();
 const { API_KEY } = process.env;
 const { Router } = require("express");
 const axios = require("axios");
-const { Temper } = require("../db");
+const { Temperaments } = require("../db");
 
 const rootRouter = Router();
 
@@ -19,12 +19,12 @@ rootRouter.get("/", async (req, res) => {
     //trim quito espacion al final y comienzo del string
     const t2 = t.trim();
     //busco si esta no creo, si no esta creo el temper en el modelo Temper
-    Temper.findOrCreate({
+    Temperaments.findOrCreate({
       where: { name: t2 },
     });
   });
 
-  const Alltempers = await Temper.findAll();
+  const Alltempers = await Temperaments.findAll();
 
   return res.status(200).send(Alltempers);
 });

@@ -23,7 +23,7 @@ const Home = () => {
   const perrosPorPagina = 8;
   const ultimoIndice = paginaActual * perrosPorPagina;
   const primerIndice = ultimoIndice - perrosPorPagina;
-  const perrosActual = allDogs?.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
+  const perrosActual = allDogs.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
 
   //console.log(perrosActual); //debe mostrar 8 dogs en arr de obj
 
@@ -48,13 +48,13 @@ const Home = () => {
   const handlerOrderByName = (event) => {
     event.preventDefault();
     dispatch(OrderbyName(event.target.value));
-    setOrder(`${event.target.value}`);
+    setOrder(event.target.value);
   };
 
   const handlerOrderByWeight = (event) => {
     event.preventDefault();
     dispatch(OrderByWeight(event.target.value));
-    setOrder(`${event.target.value}`);
+    setOrder(event.target.value);
   };
 
   return (

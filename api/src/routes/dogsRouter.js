@@ -2,16 +2,16 @@ require("dotenv").config();
 const { API_KEY } = process.env;
 const { Router } = require("express");
 const axios = require("axios");
-const { Dog, Temper } = require("../db");
+const { Dogs, Temperaments } = require("../db");
 
 const rootRouter = Router();
 
 const url = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
 
 const dogAllDB = async () => {
-  return await Dog.findAll({
+  return await Dogs.findAll({
     include: {
-      model: Temper,
+      model: Temperaments,
       attributes: ["name"],
       through: {
         attributes: [], //trae mediante los atributos del modelo
@@ -105,7 +105,7 @@ rootRouter.post("/", async (req, res) => {
   const AllWeight = [];
   AllWeight.push(max_weight, min_weight);
   //creacion del dog en la db
-  const dog = await Dog.create({
+  const dog = await Dogs.create({
     name,
     height: AllHeight,
     weight: AllWeight,
@@ -115,13 +115,14 @@ rootRouter.post("/", async (req, res) => {
       : "https://www.lavanguardia.com/files/image_607_341/uploads/2022/01/12/61de317258e6c.jpeg",
   });
 
-  const asociatedTemper = await Temper.findAll({
+  const asociatedTemper = await Temperaments.findAll({
     where: {
       name: temperaments,
     },
   });
 
-  dog.addTemper(asociatedTemper);
+  console.log(dog);
+  dog.addTemperaments(asociatedTemper);
 
   return res
     .status(201)
