@@ -1,0 +1,35 @@
+.caja {
+  background-color: rgba(255, 235, 205, 0.457);
+  font-weight: bold;
+  width: 15rem;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 24rem;
+  border-radius: 2rem;
+  align-items: center;
+}
+.name {
+  border-radius: 2rem;
+  color: blue;
+}
+.titulo {
+  position: relative;
+  top: 10px;
+  color: blue;
+  font-size: 15px;
+}
+.temper {
+  display: flex;
+  position: relative;
+  top: -5px;
+  font-size: 14px;
+}
+.image {
+  display: flex;
+  border-radius: 100rem;
+  height: 200px;
+  width: 237px;
+  border-radius: 1.5rem;
+}
