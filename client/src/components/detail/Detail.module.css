@@ -1,9 +1,10 @@
 .container {
-  background-color:rgb(107, 49, 7);
+  background-color: rgba(107, 49, 7, 0.356);
   display: flex;
   align-self: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 15px;
 }
 .buttonVolver {
   margin-top: 20px;

@@ -1,9 +1,8 @@
 import style from "./Detail.module.css";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail, clearDetail } from "../../reducer/actions";
-import { Link } from "react-router-dom";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const Detail = () => {
   return (
     <div className={style.container}>
       <button className={style.buttonVolver}>
-        <Link to="/home">Volver</Link>
+        <Link to="/home">Volver Home</Link>
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>

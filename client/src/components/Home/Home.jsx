@@ -1,5 +1,5 @@
 import style from "./Home.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -62,9 +62,8 @@ const Home = () => {
       <div className={style.header}>
         <div>
           <button className={style.volver}>
-            <NavLink to="/">Volver</NavLink>
+            <Link to="/">Volver pagina inicial</Link>
           </button>
-
           <SearchBar />
 
           <div className={style.selects}>

@@ -27,7 +27,7 @@ const Landing = () => {
             </h2>
           </div>
           <button className={style.button}>
-            <Link to="/home">Ingresar</Link>
+            <Link to="/home">Ingresar Home</Link>
           </button>
         </div>
       </div>
