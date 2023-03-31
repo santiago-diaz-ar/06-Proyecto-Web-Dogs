@@ -16,6 +16,14 @@ const SearchBar = () => {
     dispatch(getName(searchDog));
   };
 
+  //para la tecla enter
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      dispatch(getName(searchDog));
+    }
+  };
+
   return (
     <div>
       <input
@@ -23,6 +31,7 @@ const SearchBar = () => {
         onChange={handleInput}
         placeholder="Name Dog"
         className={style.input}
+        onKeyDown={handleEnter}
       />
       <button type="submit" onClick={handleSubmit} className={style.button}>
         Buscar
