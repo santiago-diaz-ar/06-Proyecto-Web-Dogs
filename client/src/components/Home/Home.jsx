@@ -2,9 +2,6 @@ import style from "./Home.module.css";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SearchBar from "../SearchBar/Searchbar";
-import Card from "../Card/card";
-import Paginate from "../Paginate/Paginate";
 import {
   getAllDogs,
   getTemper,
@@ -12,6 +9,9 @@ import {
   OrderbyName,
   OrderByWeight,
 } from "../../reducer/actions";
+import Card from "../Card/card";
+import Paginate from "../Paginate/Paginate";
+import SearchBar from "../SearchBar/Searchbar";
 
 const Home = () => {
   const dispatch = useDispatch();

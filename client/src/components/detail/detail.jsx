@@ -14,7 +14,11 @@ const Detail = () => {
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.detail);
-  const details = detail[0]?.temperaments.map((t) => t + ", ");
+
+  const details = detail[0]?.temperaments.map((t) =>
+    t.name ? t.name + " , " : t + " , "
+  );
+
   return (
     <div className={style.container}>
       <button className={style.buttonVolver}>
@@ -25,7 +29,7 @@ const Detail = () => {
 
       <h3>
         <div className={style.peso}>Peso:</div>
-        {detail[0]?.weight.map((e) => e + " kilos ")}
+        {detail[0]?.weight.map((e) => e + " libras ")}
       </h3>
 
       <h3>
