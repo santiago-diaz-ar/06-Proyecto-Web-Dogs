@@ -61,12 +61,22 @@ rootRouter.get("/", async (req, res) => {
   const { name } = req.query;
   const dogsAll = await dogDbApi();
   if (name) {
-    const dog = dogsAll.filter((dog) =>
+    /*   const dog = dogsAll.filter((dog) =>
       dog.name.toLowerCase().includes(name.toLowerCase())
     );
     if (dog.length) {
       return res.status(200).send(dog);
-    } else {
+    }  */
+    const buscadorFunct = (name, dogsAll) => {
+      //me permite buscar asi no coloquen el name en minuscula o mayuscula y si la busqueda no es exacta
+      const regex = new RegExp(name, "i");
+      return dogsAll.filter((dog) => regex.test(dog.name));
+    };
+    const buscador = buscadorFunct(name, dogsAll);
+    console.log(buscador);
+
+    if (buscador.length) res.status(200).send(buscador);
+    else {
       return res.status(400).send("no existe dog con ese nombre");
     }
   } else {

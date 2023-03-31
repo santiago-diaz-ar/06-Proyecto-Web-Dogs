@@ -7,6 +7,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
   GET_DETAIL,
+  CLEAR_DETAIL,
 } from "./types/types";
 
 export const getAllDogs = () => {
@@ -57,4 +58,8 @@ export const getDetail = (id) => {
     const detail = (await axios.get(url)).data;
     return dispatch({ type: GET_DETAIL, payload: detail });
   };
+};
+
+export const clearDetail = () => {
+  return { type: CLEAR_DETAIL };
 };

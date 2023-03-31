@@ -1,4 +1,5 @@
 import {
+  CLEAR_DETAIL,
   GET_ALL_DOGS,
   GET_DETAIL,
   GET_DOG,
@@ -121,6 +122,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         detail: Details,
+      };
+
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        detail: [],
       };
 
     default:
