@@ -26,6 +26,18 @@ const Detail = () => {
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
+   {/*    <img
+        src={detail[0]?.image}
+        className={style.image}
+        alt="img no disponible"
+      /> */}
+
+      <hr />
+      <hr />
+      <h3>
+        <div className={style.temper}>Temperamentos:</div>
+        <div>{details}</div>
+      </h3>
 
       <h3>
         <div className={style.peso}>Peso:</div>
@@ -41,13 +53,6 @@ const Detail = () => {
         <div className={style.life}>Esperanza de vida</div>
         <div>{detail[0]?.life_span}</div>
       </h3>
-
-      <h3>
-        <div className={style.temper}>Temperamentos:</div>
-        <div>{details}</div>
-      </h3>
-
-      {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
     </div>
   );
 };

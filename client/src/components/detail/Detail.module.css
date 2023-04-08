@@ -1,10 +1,10 @@
 .container {
-  background-color: rgba(107, 49, 7, 0.356);
   display: flex;
   align-self: center;
   align-items: center;
   flex-direction: column;
   border-radius: 15px;
+  background-color: rgb(96, 95, 95);
 }
 .buttonVolver {
   margin-top: 20px;
@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   border: 1px solid white;
+  color: blue;
 }
 .image {
   position: relative;
@@ -59,6 +60,7 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
+  color: blue;
 }
 .life {
   margin-top: -20px;
