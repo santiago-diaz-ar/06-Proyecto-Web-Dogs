@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 const Landing = () => {
   const dispatch = useDispatch();
-  //para que la pagina sea mas rapida add el effect en el landing
+  //para que la pagina sea mas rapida 
   useEffect(() => {
     dispatch(getAllDogs());
     dispatch(getTemper());

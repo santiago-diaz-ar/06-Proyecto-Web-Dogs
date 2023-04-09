@@ -26,7 +26,7 @@ const Detail = () => {
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
-   {/*    <img
+      {/*   <img
         src={detail[0]?.image}
         className={style.image}
         alt="img no disponible"
@@ -41,7 +41,7 @@ const Detail = () => {
 
       <h3>
         <div className={style.peso}>Peso:</div>
-        {detail[0]?.weight.map((e) => e + " libras ")}
+        {detail[0]?.weight.map((e) => e + " kilos ")}
       </h3>
 
       <h3>

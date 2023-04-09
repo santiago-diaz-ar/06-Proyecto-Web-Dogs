@@ -88,8 +88,8 @@ const Home = () => {
                 Temperamentos
               </option>
               <option value="Todos">Todos</option>
-              {allTempers?.map((temp) => (
-                <option value={temp.name} key={temp.name}>
+              {allTempers.map((temp, index) => (
+                <option value={temp.name} key={index}>
                   {temp.name}
                 </option>
               ))}
@@ -117,9 +117,9 @@ const Home = () => {
 
       <div className={style.container}>
         <div className={style.tarjeta}>
-          {perrosActual?.map((dog) => {
+          {perrosActual?.map((dog, index) => {
             return (
-              <div>
+              <div key={index}>
                 {
                   <Card
                     key={dog.id}

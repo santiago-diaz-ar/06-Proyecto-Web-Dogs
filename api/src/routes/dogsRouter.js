@@ -8,24 +8,12 @@ const rootRouter = Router();
 
 const url = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
 
-const dogAllDB = async () => {
-  return await Dogs.findAll({
-    include: {
-      model: Temperaments,
-      attributes: ["name"],
-      through: {
-        attributes: [], //trae mediante los atributos del modelo
-      },
-    },
-  });
-};
-
 const dogAllApi = async () => {
   const api = await axios.get(url);
   const apiDataInfo = api.data.map((dog) => {
     let temperArray = [];
     if (dog.temperament) {
-      temperArray = dog.temperament.split(", "); //retorno el temper en un arr
+      temperArray = dog.temperament.split(","); //retorno el temper en un arr
     }
     let heightArr = [];
     if (dog.height.metric) {
@@ -48,6 +36,18 @@ const dogAllApi = async () => {
   return apiDataInfo;
 };
 
+const dogAllDB = async () => {
+  return await Dogs.findAll({
+    include: {
+      model: Temperaments,
+      attributes: ["name"],
+      /*  through: {
+        attributes: [], //trae mediante los atributos del modelo
+      }, */
+    },
+  });
+};
+
 const dogDbApi = async () => {
   const dogsDb = await dogAllDB();
   const dogsApi = await dogAllApi();
@@ -68,12 +68,11 @@ rootRouter.get("/", async (req, res) => {
       return res.status(200).send(dog);
     }  */
     const buscadorFunct = (name, dogsAll) => {
-      //me permite buscar asi no coloquen el name en minuscula o mayuscula y si la busqueda no es exacta
-      const regex = new RegExp(name, "i");
+      //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
+      const regex = new RegExp(name, "i"); // busco no exacta
       return dogsAll.filter((dog) => regex.test(dog.name));
     };
     const buscador = buscadorFunct(name, dogsAll);
-    console.log(buscador);
 
     if (buscador.length) res.status(200).send(buscador);
     else {
@@ -111,10 +110,11 @@ rootRouter.post("/", async (req, res) => {
   //total altura
   const AllHeight = [];
   AllHeight.push(max_height, min_height);
+
   //total peso
   const AllWeight = [];
   AllWeight.push(max_weight, min_weight);
-  //creacion del dog en la db
+  //creacion del dog en la db.
   const dog = await Dogs.create({
     name,
     height: AllHeight,
@@ -122,7 +122,7 @@ rootRouter.post("/", async (req, res) => {
     life_span,
     image: image
       ? image
-      : "https://www.lavanguardia.com/files/image_607_341/uploads/2022/01/12/61de317258e6c.jpeg",
+      : "https://www.micachorro.net/wp-content/uploads/2019/06/cobrador-de-pelo-liso.jpg",
   });
 
   const asociatedTemper = await Temperaments.findAll({
@@ -131,7 +131,6 @@ rootRouter.post("/", async (req, res) => {
     },
   });
 
-  console.log(dog);
   dog.addTemperaments(asociatedTemper);
 
   return res
