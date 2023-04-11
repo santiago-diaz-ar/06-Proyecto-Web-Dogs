@@ -1,9 +1,8 @@
 import style from "./Detail.module.css";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail, clearDetail } from "../../reducer/actions";
-import { Link } from "react-router-dom";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -23,16 +22,32 @@ const Detail = () => {
   return (
     <div className={style.container}>
       <button className={style.buttonVolver}>
+<<<<<<< HEAD
         <Link to="/home">Volver a Home</Link>
+=======
+        <Link to="/home">Volver Home</Link>
+>>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
+      {/*   <img
+        src={detail[0]?.image}
+        className={style.image}
+        alt="img no disponible"
+      /> */}
+
+      <hr />
+      <hr />
+      <h3>
+        <div className={style.temper}>Temperamentos:</div>
+        <div>{details}</div>
+      </h3>
 
       {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
 
       <h3>
         <div className={style.peso}>Peso:</div>
-        {detail[0]?.weight.map((e) => e + " libras ")}
+        {detail[0]?.weight.map((e) => e + " kilos ")}
       </h3>
 
       <h3>
@@ -44,11 +59,14 @@ const Detail = () => {
         <div className={style.life}>Esperanza de vida</div>
         <div>{detail[0]?.life_span}</div>
       </h3>
+<<<<<<< HEAD
 
       <h3>
         <div className={style.temper}>Temperamentos:</div>
         <div>{details}</div>
       </h3>
+=======
+>>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
     </div>
   );
 };

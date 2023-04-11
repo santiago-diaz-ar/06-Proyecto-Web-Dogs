@@ -11,10 +11,10 @@ const Paginate = ({ perrosPorPagina, allDogs, paginado }) => {
   return (
     <ul className={style.Ul}>
       {pageNumbers &&
-        pageNumbers.map((number) => (
+        pageNumbers.map((number,index) => (
           <div
             onClick={() => paginado(number)}
-            key={number}
+            key={index}
             className={style.div}
           >
             <button className={style.button}>{number}</button>

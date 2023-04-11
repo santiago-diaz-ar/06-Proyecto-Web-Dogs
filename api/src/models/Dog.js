@@ -7,13 +7,13 @@ module.exports = (sequelize) => {
     "dogs",
     {
       id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUID, // UUID => identificador unico universal
+        primaryKey: true, // clave primaria
+        defaultValue: DataTypes.UUIDV4, //valor por defecto
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false, // no puede ser vacia la propiedad
       },
       height: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -31,6 +31,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(500),
       },
     },
-    { timestamps: false }
+    { timestamps: false } // no me  agrega las filas createAt y updatedAt por defecto en la tabla
   );
 };

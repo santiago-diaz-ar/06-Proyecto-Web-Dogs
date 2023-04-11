@@ -2,9 +2,9 @@ import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 
 const Card = ({ id, image, name, temperaments }) => {
-  const temper = temperaments.map((t) => t + ", ");
+  const temper = temperaments.map((t) => t + ",");
   return (
-    <div className={style.caja}>
+    <div className={style.caja} key={id}>
       <Link to={`/detail/${id}`}>
         <h3 className={style.name}>{name}</h3>
       </Link>

@@ -40,7 +40,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Dogs, Temperaments } = sequelize.models;
 
 // Aca vendrian las relaciones
-Dogs.belongsToMany(Temperaments, { through: "dogs_temperaments" });
+Dogs.belongsToMany(Temperaments, { through: "dogs_temperaments" }); // relacion de muchos a muchos
 Temperaments.belongsToMany(Dogs, { through: "dogs_temperaments" });
 
 module.exports = {

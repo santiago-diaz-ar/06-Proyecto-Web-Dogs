@@ -14,6 +14,6 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-    { timestamps: false }
+    { timestamps: false } // no me  agrega las filas createAt y updatedAt por defecto en la tabla
   );
 };
