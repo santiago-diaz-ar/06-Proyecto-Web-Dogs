@@ -13,7 +13,7 @@ const dogAllApi = async () => {
   const apiDataInfo = api.data.map((dog) => {
     let temperArray = [];
     if (dog.temperament) {
-      temperArray = dog.temperament.split(","); //retorno el temper en un arr
+      temperArray = dog.temperament.split(", "); //retorno el temper en un arr
     }
     let heightArr = [];
     if (dog.height.metric) {
@@ -61,12 +61,12 @@ rootRouter.get("/", async (req, res) => {
   const { name } = req.query;
   const dogsAll = await dogDbApi();
   if (name) {
-    /*   const dog = dogsAll.filter((dog) =>
+    /* const dog = dogsAll.filter((dog) =>
       dog.name.toLowerCase().includes(name.toLowerCase())
     );
     if (dog.length) {
       return res.status(200).send(dog);
-    }  */
+    } */
     const buscadorFunct = (name, dogsAll) => {
       //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
       const regex = new RegExp(name, "i"); // busco no exacta

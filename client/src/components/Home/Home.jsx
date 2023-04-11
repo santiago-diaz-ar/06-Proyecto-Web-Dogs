@@ -119,15 +119,15 @@ const Home = () => {
         <div className={style.tarjeta}>
           {perrosActual?.map((dog, index) => {
             return (
-              <div key={index}>
+              <div>
                 {
                   <Card
-                    key={dog.id}
-                    id={dog.id}
-                    image={dog.image}
-                    name={dog.name}
+                    key={index}
+                    id={dog?.id}
+                    image={dog?.image}
+                    name={dog?.name}
                     temperaments={
-                      dog.temperaments[0].name
+                      dog?.temperaments[0].name
                         ? dog.temperaments.map((temper) => temper.name)
                         : dog.temperaments
                       //POR SI EL TEMPER VIENE EN FORMATO DISTINTO DE LA DB
