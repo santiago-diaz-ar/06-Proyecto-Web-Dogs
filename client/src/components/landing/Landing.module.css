@@ -12,13 +12,8 @@
   align-items: center;
 }
 .titulo {
-<<<<<<< HEAD
   border: 1px solid blue;
   background-color: rgba(210, 105, 30, 0.745);
-=======
-  border: 1px solid whitesmoke;
-  background-color: rgb(210, 105, 30);
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
   border-radius: 7px;
   display: flex;
   flex-direction: column;

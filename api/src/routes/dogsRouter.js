@@ -60,13 +60,8 @@ rootRouter.get("/", async (req, res) => {
   //esta ruta la uso para dos rutas la de allDogs y la del name
   const { name } = req.query;
   const dogsAll = await dogDbApi();
-<<<<<<< HEAD
   if (typeof name =="string") {
     /*   const dog = dogsAll.filter((dog) =>
-=======
-  if (name) {
-    /* const dog = dogsAll.filter((dog) =>
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
       dog.name.toLowerCase().includes(name.toLowerCase())
     );
     if (dog.length) {
@@ -78,10 +73,7 @@ rootRouter.get("/", async (req, res) => {
       return dogsAll.filter((dog) => regex.test(dog.name));
     };
     const buscador = buscadorFunct(name, dogsAll);
-<<<<<<< HEAD
     //console.log(buscador);
-=======
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
 
     if (buscador.length) res.status(200).send(buscador);
     else {

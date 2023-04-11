@@ -1,8 +1,5 @@
 .container {
-<<<<<<< HEAD
   background-color: darkgray;
-=======
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
   display: flex;
   align-self: center;
   align-items: center;
@@ -28,11 +25,7 @@
   display: flex;
   align-items: center;
   border: 1px solid white;
-<<<<<<< HEAD
   color: navajowhite;
-=======
-  color: blue;
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
 }
 .image {
   position: relative;
@@ -67,11 +60,7 @@
   background-color: chocolate;
   border-radius: 10px;
   align-items: center;
-<<<<<<< HEAD
   color: burlywood;
-=======
-  color: blue;
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
 }
 .life {
   margin-top: -20px;

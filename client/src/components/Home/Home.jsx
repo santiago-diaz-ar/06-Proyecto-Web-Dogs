@@ -1,5 +1,5 @@
 import style from "./Home.module.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -58,11 +58,7 @@ const Home = () => {
       <div className={style.header}>
         <div>
           <button className={style.volver}>
-<<<<<<< HEAD
             <NavLink to="/">Volver a Pagina Inicial</NavLink>
-=======
-            <Link to="/">Volver pagina inicial</Link>
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
           </button>
           <SearchBar />
 
@@ -88,13 +84,8 @@ const Home = () => {
                 Temperamentos
               </option>
               <option value="Todos">Todos</option>
-<<<<<<< HEAD
               {allTempers?.map((temp, index) => (
                 <option value={temp.name} key={temp.name}>
-=======
-              {allTempers.map((temp, index) => (
-                <option value={temp.name} key={index}>
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
                   {temp.name}
                 </option>
               ))}
@@ -127,11 +118,7 @@ const Home = () => {
               <div key={index}>
                 {
                   <Card
-<<<<<<< HEAD
                     key={dog?.id}
-=======
-                    key={index}
->>>>>>> dd5936ddb33e38b036529c7581df057fca9fe43a
                     id={dog?.id}
                     image={dog?.image}
                     name={dog?.name}
