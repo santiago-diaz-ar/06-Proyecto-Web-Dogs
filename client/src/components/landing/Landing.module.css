@@ -1,9 +1,9 @@
 .cajaMayor {
   min-height: 70rem;
-  background-image: URL("../image//Black-dog-and-black-background-look_5120x2880.jpg");
+  /* background-image: URL("../image//Black-dog-and-black-background-look_5120x2880.jpg");
   background-size: cover;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center; */
 }
 .cajaIntermedia {
   min-height: 30rem;
@@ -12,7 +12,7 @@
   align-items: center;
 }
 .titulo {
-  border: 1px solid whitesmoke;
+  border: 1px solid blue;
   background-color: rgba(210, 105, 30, 0.745);
   border-radius: 7px;
   display: flex;

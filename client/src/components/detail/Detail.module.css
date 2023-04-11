@@ -1,5 +1,5 @@
 .container {
-  background-color:rgb(107, 49, 7);
+  background-color: darkgray;
   display: flex;
   align-self: center;
   align-items: center;
@@ -17,12 +17,13 @@
 .name {
   margin-top: 20px;
   border: 2px solid chocolate;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   background-color: chocolate;
   border-radius: 10px;
   display: flex;
   align-items: center;
   border: 1px solid white;
+  color: navajowhite;
 }
 .image {
   position: relative;
@@ -38,8 +39,8 @@
   font-size: 1.5rem;
   background-color: chocolate;
   border-radius: 10px;
-  display: flex;
   align-items: center;
+  color: burlywood;
 }
 .peso {
   margin-top: -30px;
@@ -47,8 +48,8 @@
   font-size: 1.5rem;
   background-color: chocolate;
   border-radius: 10px;
-  display: flex;
   align-items: center;
+  color: burlywood;
 }
 .temper {
   margin-top: -35px;
@@ -56,8 +57,8 @@
   font-size: 1.5rem;
   background-color: chocolate;
   border-radius: 10px;
-  display: flex;
   align-items: center;
+  color: burlywood;
 }
 .life {
   margin-top: -20px;
@@ -67,4 +68,5 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
+  color: burlywood;
 }

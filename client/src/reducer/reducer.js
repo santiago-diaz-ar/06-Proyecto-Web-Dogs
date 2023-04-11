@@ -44,7 +44,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
         filterDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
-          let encontro = allDogs[i].temperaments.find((t) => t === payload);
+          let encontro = allDogs[i].temperaments.find(
+            (t) => t === payload || t.name === payload
+          );
+
           if (encontro) {
             filterDogs.push(allDogs[i]);
           }

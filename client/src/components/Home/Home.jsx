@@ -32,7 +32,6 @@ const Home = () => {
   };
 
   const [order, setOrder] = useState("");
-
   console.log(order);
 
   useEffect(() => {
@@ -41,18 +40,15 @@ const Home = () => {
   }, [dispatch]);
 
   const handlerFilterByTemper = (event) => {
-    event.preventDefault();
     dispatch(filterByTemperament(event.target.value));
   };
 
   const handlerOrderByName = (event) => {
-    event.preventDefault();
     dispatch(OrderbyName(event.target.value));
     setOrder(event.target.value);
   };
 
   const handlerOrderByWeight = (event) => {
-    event.preventDefault();
     dispatch(OrderByWeight(event.target.value));
     setOrder(event.target.value);
   };
@@ -62,7 +58,7 @@ const Home = () => {
       <div className={style.header}>
         <div>
           <button className={style.volver}>
-            <NavLink to="/">Volver</NavLink>
+            <NavLink to="/">Volver a Pagina Inicial</NavLink>
           </button>
 
           <SearchBar />
@@ -89,7 +85,7 @@ const Home = () => {
                 Temperamentos
               </option>
               <option value="Todos">Todos</option>
-              {allTempers?.map((temp) => (
+              {allTempers?.map((temp, index) => (
                 <option value={temp.name} key={temp.name}>
                   {temp.name}
                 </option>
@@ -118,19 +114,19 @@ const Home = () => {
 
       <div className={style.container}>
         <div className={style.tarjeta}>
-          {perrosActual?.map((dog) => {
+          {perrosActual?.map((dog, index) => {
             return (
-              <div>
+              <div key={index}>
                 {
                   <Card
-                    key={dog.id}
-                    id={dog.id}
-                    image={dog.image}
-                    name={dog.name}
+                    key={dog?.id}
+                    id={dog?.id}
+                    image={dog?.image}
+                    name={dog?.name}
                     temperaments={
-                      dog.temperaments[0].name
+                      dog?.temperaments[0].name
                         ? dog.temperaments.map((temper) => temper.name)
-                        : dog.temperaments
+                        : dog?.temperaments
                       //POR SI EL TEMPER VIENE EN FORMATO DISTINTO DE LA DB
                     }
                   />

@@ -23,10 +23,12 @@ const Detail = () => {
   return (
     <div className={style.container}>
       <button className={style.buttonVolver}>
-        <Link to="/home">Volver</Link>
+        <Link to="/home">Volver a Home</Link>
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
+
+      {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
 
       <h3>
         <div className={style.peso}>Peso:</div>
@@ -47,8 +49,6 @@ const Detail = () => {
         <div className={style.temper}>Temperamentos:</div>
         <div>{details}</div>
       </h3>
-
-      {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
     </div>
   );
 };
