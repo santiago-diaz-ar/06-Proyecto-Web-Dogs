@@ -24,7 +24,7 @@ const Home = () => {
   const ultimoIndice = paginaActual * perrosPorPagina;
   const primerIndice = ultimoIndice - perrosPorPagina;
   const perrosActual = allDogs.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
-
+  // slice => proporciona un arr con inicio y fin
   //console.log(perrosActual); //debe mostrar 8 dogs en arr de obj
 
   const paginado = (pageNumber) => {

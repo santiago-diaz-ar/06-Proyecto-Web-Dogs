@@ -3,12 +3,14 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail, clearDetail } from "../../reducer/actions";
+import { clearDogs } from "../../reducer/actions";
 
 const Detail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
+    dispatch(clearDogs());
     dispatch(getDetail(id));
     return () => dispatch(clearDetail());
   }, [dispatch, id]);
@@ -26,11 +28,11 @@ const Detail = () => {
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
-      <img
+      {/*  <img
         src={detail[0]?.image}
         className={style.image}
         alt="img no disponible"
-      />
+      /> */}
 
       <hr />
 

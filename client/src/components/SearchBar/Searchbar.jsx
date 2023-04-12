@@ -29,7 +29,7 @@ const SearchBar = () => {
       <input
         type="text"
         onChange={handleInput}
-        placeholder="Name Dog"
+        placeholder="busca un perro"
         className={style.input}
         onKeyDown={handleEnter}
       />

@@ -1,6 +1,5 @@
 .form {
   min-height: 60rem;
-
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -25,7 +24,7 @@
   background-color: rgba(222, 65, 13, 0.767);
   border-radius: 10px;
   margin-top: 10px;
-  color: black;
+  color: aliceblue;
 }
 .buttonAgregar:hover {
   background-color: rgb(82, 82, 208);
@@ -37,6 +36,7 @@
   border-radius: 10px;
   color: rgba(0, 0, 0, 0.827);
   margin-top: 2rem;
+  display: flex;
 }
 .name {
   border: 2px solid chocolate;
@@ -92,4 +92,10 @@
   margin-top: 4px;
   background-color: tomato;
   color: black;
+}
+.addtemper {
+  background-color: red;
+}
+.addtemper:hover {
+  background-color: blue;
 }

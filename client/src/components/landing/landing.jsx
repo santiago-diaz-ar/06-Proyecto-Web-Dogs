@@ -25,7 +25,7 @@ const Landing = () => {
         </h3>
 
         <Link to="/home">
-          <button className={style.button}>Ingresar </button>
+          <button className={style.button}>Ingresar Home</button>
         </Link>
       </div>
     </div>

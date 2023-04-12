@@ -1,5 +1,6 @@
 import {
   CLEAR_DETAIL,
+  CLEAR_DOGS,
   GET_ALL_DOGS,
   GET_DETAIL,
   GET_DOG,
@@ -59,22 +60,50 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case GET_DOG:
-      return {
-        ...state,
-        dogs: payload,
+      const dogsAll = state.allDogs;
+      const buscadorFunct = (payload, dogsAll) => {
+        //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
+        const regex = new RegExp(payload, "i"); // busco no exacta
+        return dogsAll.filter((dog) => regex.test(dog.name));
       };
+      const buscador = buscadorFunct(payload, dogsAll);
+      //console.log(buscador);
+      const unico = Math.random();
+      const daños = [
+        {
+          id: unico,
+          name: "No existe perro",
+          height: ["Null"],
+          weight: ["Null"],
+          temperaments: ["Null"],
+          life_span: "Null",
+          image: "Null",
+        },
+      ];
+
+      if (buscador.length) {
+        return {
+          ...state,
+          dogs: buscador,
+        };
+      } else {
+        return {
+          ...state,
+          dogs: daños,
+        };
+      }
 
     case ORDER_BY_NAME:
       const ordenarName =
         payload === "A-Z"
           ? state.allDogs.sort((a, b) => {
               if (a.name > b.name) {
-                return 1;
+                return 1; // para que b sea antes que a
               }
               if (b.name > a.name) {
-                return -1;
+                return -1; // para que a se situe antes de b
               }
-              return 0;
+              return 0; // no hay cambios
             })
           : state.allDogs.sort((a, b) => {
               if (a.name > b.name) {
@@ -94,6 +123,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       const ordenarWeight =
         payload === "min_weight"
           ? state.allDogs.sort((a, b) => {
+              //parseInt para convertir a un numero entero
               if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
                 return 1;
               }
@@ -131,6 +161,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         detail: [],
+      };
+
+    case CLEAR_DOGS:
+      return {
+        ...state,
+        dogs: [],
+        allDogs: [],
+        temperaments: [],
       };
 
     default:

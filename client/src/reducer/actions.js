@@ -8,6 +8,7 @@ import {
   ORDER_BY_WEIGHT,
   GET_DETAIL,
   CLEAR_DETAIL,
+  CLEAR_DOGS,
 } from "./types/types";
 
 export const getAllDogs = () => {
@@ -32,13 +33,18 @@ export const filterByTemperament = (filter) => {
 };
 
 export const getName = (name) => {
-  return async function (dispatch) {
-    const dataName = (
-      await axios.get(`http://localhost:3001/dogs?name=${name}`)
-    ).data;
-    return dispatch({ type: GET_DOG, payload: dataName });
-  };
+  return { type: GET_DOG, payload: name };
 };
+
+//COPIA DE BUSQUEDA CON NAME EN API PERO CON ERRORES NO NECESARIOS (DOBLE TRABAJO PARA LO MISMO)
+// export const getName = (name) => {
+//   return async function (dispatch) {
+//     const dataName = (
+//       await axios.get(`http://localhost:3001/dogs?name=${name}`)
+//     ).data;
+//     return dispatch({ type: GET_DOG, payload: dataName });
+//   };
+// };
 
 export const OrderbyName = (order) => {
   return function (dispatch) {
@@ -61,4 +67,8 @@ export const getDetail = (id) => {
 
 export const clearDetail = () => {
   return { type: CLEAR_DETAIL };
+};
+
+export const clearDogs = () => {
+  return { type: CLEAR_DOGS };
 };

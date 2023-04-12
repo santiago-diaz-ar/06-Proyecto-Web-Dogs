@@ -60,25 +60,59 @@ rootRouter.get("/", async (req, res) => {
   //esta ruta la uso para dos rutas la de allDogs y la del name
   const { name } = req.query;
   const dogsAll = await dogDbApi();
-  if (typeof name =="string") {
-    /*   const dog = dogsAll.filter((dog) =>
-      dog.name.toLowerCase().includes(name.toLowerCase())
-    );
-    if (dog.length) {
-      return res.status(200).send(dog);
-    } */
-    const buscadorFunct = (name, dogsAll) => {
-      //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
-      const regex = new RegExp(name, "i"); // busco no exacta
-      return dogsAll.filter((dog) => regex.test(dog.name));
-    };
-    const buscador = buscadorFunct(name, dogsAll);
-    //console.log(buscador);
-
-    if (buscador.length) res.status(200).send(buscador);
-    else {
-      return res.status(400).send("no existe dog con ese nombre");
-    }
+  if (typeof name === "string" && name) {
+    //Busqueda por iniciales
+    // const results = dogsAll.filter(
+    //   (item) => item.name.toLowerCase().startsWith(name.toLowerCase()) // Filtrar elementos cuyo nombre comienza con la inicial de búsqueda (insensible a mayúsculas y minúsculas)
+    // );
+    // if (results.length) {
+    //   return res.status(200).send(results);
+    // } else {
+    //   const unico = Math.random();
+    //   return res.status(200).send([
+    //     {
+    //       id: unico,
+    //       name: "No existe perro",
+    //       height: ["Null"],
+    //       weight: ["Null"],
+    //       temperaments: ["Null"],
+    //       life_span: "Null",
+    //       image: "Null",
+    //     },
+    //   ]);
+    // }
+    //
+    //Busqueda por nombre exacto
+    //   const dog = dogsAll.filter((dog) =>
+    //   dog.name.toLowerCase().includes(name.toLowerCase())
+    // );
+    // if (dog.length) {
+    //   return res.status(200).send(dog);
+    // }
+    //
+    //Busqueda no exacta, sirve igual que la exacta y las por iniciales y por alguna letra igual en su texto
+    // const buscadorFunct = (name, dogsAll) => {
+    //   //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
+    //   const regex = new RegExp(name, "i"); // busco no exacta
+    //   return dogsAll.filter((dog) => regex.test(dog.name));
+    // };
+    // const buscador = buscadorFunct(name, dogsAll);
+    // //console.log(buscador);
+    // if (buscador.length) res.status(200).send(buscador);
+    // else {
+    //   const unico = Math.random();
+    //   return res.status(200).send([
+    //     {
+    //       id: unico,
+    //       name: "No existe perro",
+    //       height: ["Null"],
+    //       weight: ["Null"],
+    //       temperaments: ["Null"],
+    //       life_span: "Null",
+    //       image: "Null",
+    //     },
+    //   ]);
+    // }
   } else {
     return res.status(200).send(dogsAll);
   }
@@ -92,7 +126,18 @@ rootRouter.get("/:idRaza", async (req, res) => {
   if (dog.length) {
     return res.status(200).send(dog);
   } else {
-    return res.status(400).send("no existe dog con ese id");
+    const unico = Math.random();
+    return res.status(200).send([
+      {
+        id: unico,
+        name: "No existe perro",
+        height: ["Null"],
+        weight: ["Null"],
+        temperaments: ["Null"],
+        life_span: "Null",
+        image: "Null",
+      },
+    ]);
   }
 });
 

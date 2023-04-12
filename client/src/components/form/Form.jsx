@@ -97,11 +97,11 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       <Link to="/home">
-        <button className={style.buttonVolver}>Volver</button>
+        <button className={style.buttonVolver}>Volver Home</button>
       </Link>
 
       <h3 className={style.agregarRaza}>
-        Agrega un raza de perro en nuestra base de datos
+        Agrega un raza de perro en nuestra base de datos.
       </h3>
 
       <input
@@ -109,7 +109,7 @@ const Form = () => {
         name="name"
         value={form.name}
         onChange={handleChange}
-        placeholder="nombre de perro"
+        placeholder="nombre del perro"
         className={style.name}
       />
       {errors.name && <div>{errors.name}</div>}
@@ -122,7 +122,7 @@ const Form = () => {
         placeholder="Altura max del perro(cmt)"
         className={style.alturaMax}
       />
-      {errors.max_height && <div>altura max es requerida</div>}
+      {errors.max_height && <div>{errors.max_height}</div>}
 
       <input
         type="text"
@@ -132,7 +132,7 @@ const Form = () => {
         placeholder="Altura min del perro(cmt)"
         className={style.alturaMin}
       />
-      {errors.min_height && <div>altura min es requerida</div>}
+      {errors.min_height && <div>{errors.min_height}</div>}
 
       <input
         type="text"
@@ -142,7 +142,7 @@ const Form = () => {
         placeholder="Peso max de perro(kg)"
         className={style.pesoMax}
       />
-      {errors.max_weight && <div>peso max es requerido</div>}
+      {errors.max_weight && <div>{errors.max_weight}</div>}
 
       <input
         type="text"
@@ -152,7 +152,7 @@ const Form = () => {
         placeholder="Peso min del perro(kg)"
         className={style.pesoMin}
       />
-      {errors.min_weight && <div>peso min es requerido</div>}
+      {errors.min_weight && <div>{errors.min_weight}</div>}
 
       <input
         type="text"
@@ -162,7 +162,7 @@ const Form = () => {
         placeholder="esperanza de vida(años)"
         className={style.life_span}
       />
-      {errors.life_span && <div>esperanza de vida es requerida</div>}
+      {errors.life_span && <div>{errors.life_span}</div>}
 
       <input
         type="text"
@@ -176,7 +176,7 @@ const Form = () => {
       <hr />
 
       <select onChange={handleSelect} className={style.prueba}>
-        <option disabled selected>
+        <option disabled defaultValue>
           temperamentos
         </option>
         {temperaments.map((temper, index) => (
@@ -197,6 +197,14 @@ const Form = () => {
       <button type="submit" className={style.buttonAgregar} disabled={button}>
         Agregar
       </button>
+      <hr />
+      <h3>
+        Recuerda la mayoria de los campos son obligatorios, para que se active
+        el boton de agregar.
+        <hr />
+        Recuerda tambien que en la LISTA DE TEMPER AGREGADOS, puedes eliminar
+        los que desees dandole click encima a estos mismos
+      </h3>
     </form>
   );
 };
