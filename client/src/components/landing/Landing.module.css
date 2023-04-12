@@ -1,9 +1,9 @@
-.cajaMayor {
+/* .cajaMayor {
   min-height: 70rem;
-  /* background-image: URL("../image//Black-dog-and-black-background-look_5120x2880.jpg");
+  background-image: URL("../image//Black-dog-and-black-background-look_5120x2880.jpg");
   background-size: cover;
   background-attachment: fixed;
-  background-position: center; */
+  background-position: center;
 }
 .cajaIntermedia {
   min-height: 30rem;
@@ -39,4 +39,46 @@
   border-radius: 7px;
   flex-wrap: wrap;
   color: black;
+}
+ */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 38rem;
+  text-align: center;
+  background-image: url("../image//37963.jpg"); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-repeat: no-repeat; /* No se repite */
+  background-position: center center;
+}
+.caja {
+  margin: 4rem;
+}
+.titulo {
+  background-color: rgba(210, 105, 30, 0.463);
+  border-radius: 0.5rem;
+  border:2px solid chocolate;
+  color: antiquewhite;
+}
+.texto {
+  position: relative;
+  height: 8rem;
+  margin-top: 3rem;
+  background-color: rgba(210, 105, 30, 0.352);
+  border-radius: 0.5rem;
+  color: rgba(0, 0, 0, 0.88);
+  border: 2px solid snow;
+}
+.button {
+  position: relative;
+  height: 2rem;
+  margin-top: 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  background-color: beige;
+  font-weight: bold;
+}
+.button:hover {
+  background-color: brown;
 }

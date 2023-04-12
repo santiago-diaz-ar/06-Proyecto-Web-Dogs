@@ -85,7 +85,7 @@ const Home = () => {
               </option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp, index) => (
-                <option value={temp.name} key={temp.name}>
+                <option value={temp.name} key={index}>
                   {temp.name}
                 </option>
               ))}
@@ -118,7 +118,7 @@ const Home = () => {
               <div key={index}>
                 {
                   <Card
-                    key={dog?.id}
+                    key={dog?.index}
                     id={dog?.id}
                     image={dog?.image}
                     name={dog?.name}

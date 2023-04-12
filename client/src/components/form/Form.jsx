@@ -179,8 +179,8 @@ const Form = () => {
         <option disabled selected>
           temperamentos
         </option>
-        {temperaments.map((temper) => (
-          <option key={temper.id} value={temper.name}>
+        {temperaments.map((temper, index) => (
+          <option key={index} value={temper.name}>
             {temper.name}
           </option>
         ))}
@@ -188,8 +188,8 @@ const Form = () => {
 
       <div className={style.prueba}>
         <h3 className={style.lista}>Lista de temper agregados</h3>
-        {form.temperaments.map((temper) => (
-          <div key={temper} onClick={() => handleDelete(temper)}>
+        {form.temperaments.map((temper, index) => (
+          <div key={index} onClick={() => handleDelete(temper)}>
             <h5 className={style.addtemper}>{temper + ", "}</h5>
           </div>
         ))}

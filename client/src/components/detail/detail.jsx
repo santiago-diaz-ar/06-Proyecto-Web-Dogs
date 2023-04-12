@@ -26,37 +26,30 @@ const Detail = () => {
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
-      {/*   <img
+      <img
         src={detail[0]?.image}
         className={style.image}
         alt="img no disponible"
-      /> */}
+      />
 
       <hr />
-      <hr />
-      <h3>
-        <div className={style.temper}>Temperamentos:</div>
-        <div>{details}</div>
-      </h3>
 
-      {/* <img src={detail[0]?.image} className={style.image} alt="img no disponible"/> */}
-
-      <h3>
+      <h3 className={style.pesoh3}>
         <div className={style.peso}>Peso:</div>
         {detail[0]?.weight.map((e) => e + " kilos ")}
       </h3>
 
-      <h3>
+      <h3 className={style.alturah3}>
         <div className={style.altura}>Altura:</div>
         {detail[0]?.height.map((e) => e + " cmt ")}
       </h3>
 
-      <h3>
+      <h3 className={style.lifeh3}>
         <div className={style.life}>Esperanza de vida</div>
         <div>{detail[0]?.life_span}</div>
       </h3>
 
-      <h3>
+      <h3 className={style.temperh3}>
         <div className={style.temper}>Temperamentos:</div>
         <div>{details}</div>
       </h3>
