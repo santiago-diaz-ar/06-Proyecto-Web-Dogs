@@ -50,14 +50,14 @@ const Form = () => {
   const handleSelect = (event) => {
     setForm({
       ...form,
-      temperaments: [...form.temperaments, event.target.value],
+      temperaments: [...form.temperaments, event.target.value], //copia de lo que ya hay y lo que el usuario agrega en el select de temperamentos
     });
   };
 
   const handleDelete = (event) => {
     setForm({
       ...form,
-      temperaments: form.temperaments.filter((temper) => temper !== event),
+      temperaments: form.temperaments.filter((temper) => temper !== event), // me deja solo los que no contengan a lo que el usuario da click
     });
   };
 
@@ -194,6 +194,7 @@ const Form = () => {
           </div>
         ))}
       </div>
+      {/* disable para habilitar o deshabilitar el botton */}
       <button type="submit" className={style.buttonAgregar} disabled={button}>
         Agregar
       </button>

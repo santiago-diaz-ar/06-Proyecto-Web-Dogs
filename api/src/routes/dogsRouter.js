@@ -51,17 +51,18 @@ const dogAllDB = async () => {
 const dogDbApi = async () => {
   const dogsDb = await dogAllDB();
   const dogsApi = await dogAllApi();
-  //tambien lo puedo hacer con un concat
+
   const dogsAllDbApi = [...dogsDb, ...dogsApi];
   return dogsAllDbApi;
 };
 
+//todo: LLAMADO A TODOS LOS DOGS O DOGS POR NOMBRE
 rootRouter.get("/", async (req, res) => {
   //esta ruta la uso para dos rutas la de allDogs y la del name
   const { name } = req.query;
   const dogsAll = await dogDbApi();
   if (typeof name === "string" && name) {
-    //Busqueda por iniciales
+    //todo: Busqueda por iniciales
     // const results = dogsAll.filter(
     //   (item) => item.name.toLowerCase().startsWith(name.toLowerCase()) // Filtrar elementos cuyo nombre comienza con la inicial de búsqueda (insensible a mayúsculas y minúsculas)
     // );
@@ -82,7 +83,7 @@ rootRouter.get("/", async (req, res) => {
     //   ]);
     // }
     //
-    //Busqueda por nombre exacto
+    //todo: Busqueda por nombre exacto
     //   const dog = dogsAll.filter((dog) =>
     //   dog.name.toLowerCase().includes(name.toLowerCase())
     // );
@@ -90,34 +91,35 @@ rootRouter.get("/", async (req, res) => {
     //   return res.status(200).send(dog);
     // }
     //
-    //Busqueda no exacta, sirve igual que la exacta y las por iniciales y por alguna letra igual en su texto
-    // const buscadorFunct = (name, dogsAll) => {
-    //   //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
-    //   const regex = new RegExp(name, "i"); // busco no exacta
-    //   return dogsAll.filter((dog) => regex.test(dog.name));
-    // };
-    // const buscador = buscadorFunct(name, dogsAll);
-    // //console.log(buscador);
-    // if (buscador.length) res.status(200).send(buscador);
-    // else {
-    //   const unico = Math.random();
-    //   return res.status(200).send([
-    //     {
-    //       id: unico,
-    //       name: "No existe perro",
-    //       height: ["Null"],
-    //       weight: ["Null"],
-    //       temperaments: ["Null"],
-    //       life_span: "Null",
-    //       image: "Null",
-    //     },
-    //   ]);
-    // }
+    //todo:  Busqueda no exacta, sirve igual que la exacta y las por iniciales y por alguna letra igual en su texto
+    const buscadorFunct = (name, dogsAll) => {
+      //me permite buscar el name en minuscula o mayuscula, o si la busqueda no es exacta
+      const regex = new RegExp(name, "i"); // busco no exacta
+      return dogsAll.filter((dog) => regex.test(dog.name));
+    };
+    const buscador = buscadorFunct(name, dogsAll);
+    //console.log(buscador);
+    if (buscador.length) res.status(200).send(buscador);
+    else {
+      const unico = Math.random();
+      return res.status(200).send([
+        {
+          id: unico,
+          name: "No existe perro",
+          height: ["Null"],
+          weight: ["Null"],
+          temperaments: ["Null"],
+          life_span: "Null",
+          image: "Null",
+        },
+      ]);
+    }
   } else {
     return res.status(200).send(dogsAll);
   }
 });
 
+//todo: LLAMADO AL ID
 rootRouter.get("/:idRaza", async (req, res) => {
   //trae un dog por su id
   const { idRaza } = req.params;
@@ -141,6 +143,7 @@ rootRouter.get("/:idRaza", async (req, res) => {
   }
 });
 
+//todo: CREAR PERRO
 rootRouter.post("/", async (req, res) => {
   const {
     name,
@@ -153,7 +156,7 @@ rootRouter.post("/", async (req, res) => {
     image,
   } = req.body;
 
-  //total altura
+  //todo: total altura
   const AllHeight = [];
   AllHeight.push(max_height, min_height);
 
@@ -168,7 +171,7 @@ rootRouter.post("/", async (req, res) => {
     life_span,
     image: image
       ? image
-      : "https://www.micachorro.net/wp-content/uploads/2019/06/cobrador-de-pelo-liso.jpg",
+      : "https://thumbs.dreamstime.com/b/línea-gruesa-de-icono-caricatura-animal-perro-con-cara-corta-dibujo-en-fondo-blanco-165171464.jpg",
   });
 
   const asociatedTemper = await Temperaments.findAll({

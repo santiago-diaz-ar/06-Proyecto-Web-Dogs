@@ -6,6 +6,8 @@ import Detail from "./components/Detail/detail.jsx";
 import Form from "./components/Form/Form.jsx";
 
 function App() {
+  //Routes => permite usar todas las rutas y rutas anidadas(proceso de dirigir solicitudes URL)
+  //Route => configurar enrutamiento de mis componentes
   return (
     <div className="App">
       <Routes>

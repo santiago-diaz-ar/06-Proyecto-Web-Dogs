@@ -21,8 +21,8 @@ const Home = () => {
   //paginado
   const [paginaActual, setPaginaActual] = useState(1);
   const perrosPorPagina = 8;
-  const ultimoIndice = paginaActual * perrosPorPagina;
-  const primerIndice = ultimoIndice - perrosPorPagina;
+  const ultimoIndice = paginaActual * perrosPorPagina; // 2 * 8 = 16 retorna de 8 al 16
+  const primerIndice = ultimoIndice - perrosPorPagina; // 16 - 8 = 8 retorna los primeros 8
   const perrosActual = allDogs.slice(primerIndice, ultimoIndice); //elementos a mostrar en la tarjeta segun el indice del paginado
   // slice => proporciona un arr con inicio y fin
   //console.log(perrosActual); //debe mostrar 8 dogs en arr de obj
@@ -60,6 +60,7 @@ const Home = () => {
           <button className={style.volver}>
             <NavLink to="/">Volver a Pagina Inicial</NavLink>
           </button>
+
           <SearchBar />
 
           <div className={style.selects}>

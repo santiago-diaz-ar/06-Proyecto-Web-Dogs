@@ -18,7 +18,9 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
+  //  switch => declaracion permite ejecutar diferentes bloques de codigo
   switch (type) {
+    //todo: trae todos los perros
     case GET_ALL_DOGS:
       payload.forEach((dog) => {
         if (!dog.temperaments[0]) {
@@ -31,6 +33,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allDogs: payload,
       };
 
+    //todo: trae los temperamentos
     case GET_TEMPER:
       const limpiarTemper = payload.filter((temper) => temper.name !== ""); //elimino tempers que tiene el name vacio
       return {
@@ -38,6 +41,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         temperaments: limpiarTemper,
       };
 
+    //todo: filtrar por temperamento
     case GET_FILTER_TEMPER:
       const allDogs = state.allDogs;
       let filterDogs = [];
@@ -59,6 +63,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         dogs: filterDogs,
       };
 
+    //todo: traer perro por nombre
     case GET_DOG:
       const dogsAll = state.allDogs;
       const buscadorFunct = (payload, dogsAll) => {
@@ -93,59 +98,62 @@ const rootReducer = (state = initialState, { type, payload }) => {
         };
       }
 
+    //todo: ordenar por nombre
     case ORDER_BY_NAME:
       const ordenarName =
         payload === "A-Z"
           ? state.allDogs.sort((a, b) => {
               if (a.name > b.name) {
-                return 1; // para que b sea antes que a
+                return 1; // retorna un valor positivo indicando que B sea antes que A
               }
               if (b.name > a.name) {
-                return -1; // para que a se situe antes de b
+                return -1; //retorna un valor negativo indicando para que A sea antes que B
               }
               return 0; // no hay cambios
             })
           : state.allDogs.sort((a, b) => {
               if (a.name > b.name) {
-                return -1;
+                return -1; // A antes que B
               }
               if (b.name > a.name) {
-                return 1;
+                return 1; // B antes que A
               }
-              return 0;
+              return 0; // no hay cambios
             });
       return {
         ...state,
         dogs: ordenarName,
       };
 
+    //todo: ordenar por peso
     case ORDER_BY_WEIGHT:
       const ordenarWeight =
         payload === "min_weight"
           ? state.allDogs.sort((a, b) => {
               //parseInt para convertir a un numero entero
               if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
-                return 1;
+                return 1; // B antes que A
               }
               if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
-                return -1;
+                return -1; // A antes que B
               }
-              return 0;
+              return 0; // NO HAY CAMBIOS
             })
           : state.allDogs.sort((a, b) => {
               if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
-                return -1;
+                return -1; //A antes que B
               }
               if (parseInt(b.weight[1]) > parseInt(a.weight[1])) {
-                return 1;
+                return 1; // B antes que A
               }
-              return 0;
+              return 0; // NO hay cambios
             });
       return {
         ...state,
         dogs: ordenarWeight,
       };
 
+    //todo: trae el detalle
     case GET_DETAIL:
       let Details = payload;
       if (!Details[0].temperaments[0]) {
@@ -157,12 +165,14 @@ const rootReducer = (state = initialState, { type, payload }) => {
         detail: Details,
       };
 
+    //todo: borra el estado detalle
     case CLEAR_DETAIL:
       return {
         ...state,
         detail: [],
       };
 
+    //todo: borra el estado dogs y allDogs
     case CLEAR_DOGS:
       return {
         ...state,
