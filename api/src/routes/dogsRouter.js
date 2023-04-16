@@ -145,46 +145,50 @@ rootRouter.get("/:idRaza", async (req, res) => {
 
 //todo: CREAR PERRO
 rootRouter.post("/", async (req, res) => {
-  const {
-    name,
-    max_height,
-    min_height,
-    max_weight,
-    min_weight,
-    life_span,
-    temperaments,
-    image,
-  } = req.body;
+  try {
+    const {
+      name,
+      max_height,
+      min_height,
+      max_weight,
+      min_weight,
+      life_span,
+      temperaments,
+      image,
+    } = req.body;
 
-  //todo: total altura
-  const AllHeight = [];
-  AllHeight.push(max_height, min_height);
+    //todo: total altura
+    const AllHeight = [];
 
-  //total peso
-  const AllWeight = [];
-  AllWeight.push(max_weight, min_weight);
-  //creacion del dog en la db.
-  const dog = await Dogs.create({
-    name,
-    height: AllHeight,
-    weight: AllWeight,
-    life_span,
-    image: image
-      ? image
-      : "https://thumbs.dreamstime.com/b/línea-gruesa-de-icono-caricatura-animal-perro-con-cara-corta-dibujo-en-fondo-blanco-165171464.jpg",
-  });
+    AllHeight.push(max_height, min_height);
 
-  const asociatedTemper = await Temperaments.findAll({
-    where: {
-      name: temperaments,
-    },
-  });
+    //total peso
+    const AllWeight = [];
+    AllWeight.push(max_weight, min_weight);
+    //creacion del dog en la db.
+    const dog = await Dogs.create({
+      name,
+      height: AllHeight,
+      weight: AllWeight,
+      life_span,
+      image: image
+        ? image
+        : "https://thumbs.dreamstime.com/b/línea-gruesa-de-icono-caricatura-animal-perro-con-cara-corta-dibujo-en-fondo-blanco-165171464.jpg",
+    });
 
-  dog.addTemperaments(asociatedTemper);
+    const asociatedTemper = await Temperaments.findAll({
+      where: {
+        name: temperaments,
+      },
+    });
 
-  return res
-    .status(201)
-    .send("Raza de perro creado con exito en la base de datos");
+    dog.addTemperaments(asociatedTemper);
+
+    if (dog) res.status(201).send("Raza creada con exito en la base de datos");
+    //
+  } catch (error) {
+    return res.status(400).send(error.message);
+  }
 });
 
 module.exports = rootRouter;

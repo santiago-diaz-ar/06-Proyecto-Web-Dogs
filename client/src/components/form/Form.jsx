@@ -35,10 +35,19 @@ const Form = () => {
   });
 
   const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value, // se busca en que input esta escribiendo con la prop name del input, y se modifica el estado
-    });
+    console.log(event.target.name === "name");
+    if (!event.target.name === "name") {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value, // se busca en que input esta escribiendo con la prop name del input, y se modifica el estado
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
+
     setErrors(
       validate({
         ...form,
@@ -63,18 +72,23 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:3001/dogs", form);
-    alert("Perro creado con exito en la db agrega uno nuevo");
-    setForm({
-      name: "",
-      max_height: "",
-      min_height: "",
-      max_weight: "",
-      min_weight: "",
-      life_span: "",
-      image: "",
-      temperaments: [],
-    });
+    try {
+      const result = axios.post("http://localhost:3001/dogs", form);
+      console.log(result.exit);
+      setForm({
+        name: "",
+        max_height: "",
+        min_height: "",
+        max_weight: "",
+        min_weight: "",
+        life_span: "",
+        image: "",
+        temperaments: [],
+      });
+      alert("creado");
+    } catch (error) {
+      alert(`error al crear perro en la base de datos${error}`);
+    }
   };
 
   const [button, setButton] = useState(true);
@@ -105,7 +119,7 @@ const Form = () => {
       </h3>
 
       <input
-        type="text"
+        type="string"
         name="name"
         value={form.name}
         onChange={handleChange}
@@ -115,7 +129,7 @@ const Form = () => {
       {errors.name && <div>{errors.name}</div>}
 
       <input
-        type="text"
+        type="number"
         name="max_height"
         value={form.max_height}
         onChange={handleChange}
@@ -125,7 +139,7 @@ const Form = () => {
       {errors.max_height && <div>{errors.max_height}</div>}
 
       <input
-        type="text"
+        type="number"
         name="min_height"
         onChange={handleChange}
         value={form.min_height}
@@ -135,7 +149,7 @@ const Form = () => {
       {errors.min_height && <div>{errors.min_height}</div>}
 
       <input
-        type="text"
+        type="number"
         name="max_weight"
         onChange={handleChange}
         value={form.max_weight}
@@ -145,7 +159,7 @@ const Form = () => {
       {errors.max_weight && <div>{errors.max_weight}</div>}
 
       <input
-        type="text"
+        type="number"
         name="min_weight"
         onChange={handleChange}
         value={form.min_weight}
@@ -155,7 +169,7 @@ const Form = () => {
       {errors.min_weight && <div>{errors.min_weight}</div>}
 
       <input
-        type="text"
+        type="number"
         name="life_span"
         onChange={handleChange}
         value={form.life_span}

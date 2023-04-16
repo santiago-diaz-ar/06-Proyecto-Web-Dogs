@@ -58,7 +58,7 @@
 .titulo {
   background-color: rgba(210, 105, 30, 0.463);
   border-radius: 0.5rem;
-  border:2px solid chocolate;
+  border: 2px solid chocolate;
   color: antiquewhite;
 }
 .texto {
@@ -76,9 +76,9 @@
   margin-top: 1rem;
   border-radius: 2rem;
   font-size: 0.9rem;
-  background-color: beige;
+  background-color: coral;
   font-weight: bold;
 }
 .button:hover {
-  background-color: brown;
+  background-color:burlywood;
 }
