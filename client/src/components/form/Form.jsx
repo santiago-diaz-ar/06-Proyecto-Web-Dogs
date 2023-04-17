@@ -1,10 +1,11 @@
 import style from "./Form.module.css";
 import axios from "axios";
+import validate from "./validate";
+import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemper } from "../../reducer/actions";
-import validate from "./validate";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -106,7 +107,8 @@ const Form = () => {
       </Link>
 
       <h3 className={style.agregarRaza}>
-        Agrega un raza de perro en nuestra base de datos.
+        Agrega un raza de perro en nuestra base de datos, recuerda el boton
+        agregar se activara una vez llenes los campos
       </h3>
 
       <input
@@ -193,10 +195,19 @@ const Form = () => {
       </select>
 
       <div className={style.prueba}>
-        <h3 className={style.lista}>Lista de temper agregados</h3>
+        <h3 className={style.lista}>Lista de temperamentos agregados</h3>
         {form.temperaments.map((temper, index) => (
-          <div key={index} onClick={() => handleDelete(temper)}>
-            <h5 className={style.addtemper}>{temper + ", "}</h5>
+          <div key={uuidv4()}>
+            <h5 className={style.addtemper}>
+              {temper + " "}
+              <button
+                key={index}
+                onClick={() => handleDelete(temper)}
+                className={style.x}
+              >
+                borrar
+              </button>
+            </h5>
           </div>
         ))}
       </div>
