@@ -112,12 +112,15 @@ const Form = () => {
       </h3>
 
       <input
-        type="string"
+        type="text"
         name="name"
         value={form.name}
         onChange={handleChange}
         placeholder="Raza de perro"
         className={style.name}
+        maxlength="20"
+        pattern="[A-Za-z]+"
+        title="Ingresa un máximo de 20 letras y deben ser de tipo texto"
       />
       {errors.name && <div>{errors.name}</div>}
 
