@@ -120,7 +120,7 @@ const Form = () => {
         className={style.name}
         maxlength="20"
         pattern="[A-Za-z]+"
-        title="Ingresa un máximo de 20 letras y deben ser de tipo texto"
+        title="máximo de 20 letras y de tipo texto"
       />
       {errors.name && <div>{errors.name}</div>}
 
