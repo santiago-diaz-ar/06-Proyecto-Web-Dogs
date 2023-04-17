@@ -64,7 +64,7 @@ const Form = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const result = axios.post("http://localhost:3001/dogs", form);
+      const result = await axios.post("http://localhost:3001/dogs", form);
       //console.log(await result);
       setForm({
         name: "",
@@ -76,7 +76,7 @@ const Form = () => {
         image: "",
         temperaments: [],
       });
-      if (result) alert("Raza creada con exito en la base de datos");
+      if (result) alert(result.data);
     } catch (error) {
       alert("error al crear en base de datos" + error.message);
     }
@@ -204,14 +204,6 @@ const Form = () => {
       <button type="submit" className={style.buttonAgregar} disabled={button}>
         Agregar
       </button>
-      <hr />
-      <h3>
-        Recuerda la mayoria de los campos son obligatorios, para que se active
-        el boton de agregar.
-        <hr />
-        Recuerda tambien que en la LISTA DE TEMPER AGREGADOS, puedes eliminar
-        los que desees dandole click encima a estos mismos
-      </h3>
     </form>
   );
 };

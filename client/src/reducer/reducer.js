@@ -45,7 +45,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_FILTER_TEMPER:
       const allDogs = state.allDogs;
       let filterDogs = [];
-      if (payload === "Todos") {
+      if (payload === "Todos" || payload === "Temperamentos") {
         filterDogs = allDogs;
       } else {
         for (let i = 0; i < allDogs.length; i++) {
@@ -101,7 +101,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     //todo: ordenar por nombre
     case ORDER_BY_NAME:
       const ordenarName =
-        payload === "A-Z"
+        payload === "A-Z" || payload === "orden Alfabetico"
           ? state.dogs.sort((a, b) => {
               if (a.name > b.name) {
                 return 1; // retorna un valor positivo indicando que B sea antes que A

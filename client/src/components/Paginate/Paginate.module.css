@@ -7,14 +7,13 @@
 .div {
   display: flex;
   margin: 4px;
- 
 }
 .button {
   border: 1px solid whitesmoke;
-  background-color:chocolate;
+  background-color: chocolate;
   font-size: 1rem;
   border-radius: 7px;
 }
-.button:hover{
-  background-color:rgb(80, 80, 233);
+.button:hover {
+  background-color: rgb(80, 80, 233);
 }

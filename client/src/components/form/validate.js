@@ -1,7 +1,7 @@
 const validate = (form) => {
   let errors = {};
   if (!form.name || typeof form.name !== "string") {
-    errors.name = "nombre es requerido, debe ser de tipo texto";
+    errors.name = "raza de perro es requerida, debe ser de tipo texto";
   } else if (!form.max_height || typeof form.max_height !== "string") {
     errors.max_height = "altura max es requerida, debe ser de tipo numero";
   } else if (!form.min_height || typeof form.min_height !== "string") {

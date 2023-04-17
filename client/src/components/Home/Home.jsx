@@ -1,4 +1,5 @@
 import style from "./Home.module.css";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +7,8 @@ import {
   filterByTemperament,
   OrderbyName,
   OrderByWeight,
+  getAllDogs,
+  getTemper,
 } from "../../reducer/actions";
 import Card from "../Card/card";
 import Paginate from "../Paginate/Paginate";
@@ -46,6 +49,15 @@ const Home = () => {
     setOrder(event.target.value);
   };
 
+  const reinicioPaginate = () => {
+    setPaginaActual(1);
+  };
+
+  useEffect(() => {
+    dispatch(getAllDogs());
+    dispatch(getTemper());
+  }, [dispatch]);
+
   return (
     <div>
       <div className={style.header}>
@@ -58,19 +70,29 @@ const Home = () => {
 
           <div className={style.selects}>
             <select onChange={handlerOrderByName} className={style.order}>
-              <option selected>orden Alfabetico</option>
+              <option >
+                orden Alfabetico
+              </option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
 
             <select onChange={handlerOrderByWeight} className={style.peso}>
-              <option selected>Filtrar por peso</option>
+              <option >
+                Filtrar por peso
+              </option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
-            <select onChange={handlerFilterByTemper} className={style.filter}>
-              <option selected>Temperamentos</option>
+            <select
+              onChange={handlerFilterByTemper}
+              className={style.filter}
+              onClick={reinicioPaginate}
+            >
+              <option >
+                Temperamentos
+              </option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp, index) => (
                 <option value={temp.name} key={index}>
