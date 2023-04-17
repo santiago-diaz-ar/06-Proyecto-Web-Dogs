@@ -1,10 +1,8 @@
 import style from "./Home.module.css";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getAllDogs,
-  getTemper,
   filterByTemperament,
   OrderbyName,
   OrderByWeight,
@@ -34,11 +32,6 @@ const Home = () => {
   const [order, setOrder] = useState("");
   console.log(order);
 
-  useEffect(() => {
-    dispatch(getAllDogs());
-    dispatch(getTemper());
-  }, [dispatch]);
-
   const handlerFilterByTemper = (event) => {
     dispatch(filterByTemperament(event.target.value));
   };
@@ -65,25 +58,19 @@ const Home = () => {
 
           <div className={style.selects}>
             <select onChange={handlerOrderByName} className={style.order}>
-              <option disabled defaultValue>
-                orden Alfabetico
-              </option>
+              <option selected>orden Alfabetico</option>
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
 
             <select onChange={handlerOrderByWeight} className={style.peso}>
-              <option disabled defaultValue>
-                Filtrar por peso
-              </option>
+              <option selected>Filtrar por peso</option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
             <select onChange={handlerFilterByTemper} className={style.filter}>
-              <option disabled defaultValue>
-                Temperamentos
-              </option>
+              <option selected>Temperamentos</option>
               <option value="Todos">Todos</option>
               {allTempers?.map((temp, index) => (
                 <option value={temp.name} key={index}>

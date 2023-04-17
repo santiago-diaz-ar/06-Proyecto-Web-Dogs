@@ -160,17 +160,24 @@ rootRouter.post("/", async (req, res) => {
     //todo: total altura
     const AllHeight = [];
 
-    AllHeight.push(max_height, min_height);
+    const parseo1 = parseInt(max_height);
+    const parseo2 = parseInt(min_height);
+    AllHeight.push(parseo1, parseo2);
 
     //total peso
     const AllWeight = [];
-    AllWeight.push(max_weight, min_weight);
+    const parseo3 = parseInt(max_weight);
+    const parseo4 = parseInt(min_weight);
+    AllWeight.push(parseo3, parseo4);
     //creacion del dog en la db.
+
+    //paso a numero la esperanza de vida
+    const parseo5 = parseInt(life_span);
     const dog = await Dogs.create({
       name,
       height: AllHeight,
       weight: AllWeight,
-      life_span,
+      life_span: parseo5,
       image: image
         ? image
         : "https://thumbs.dreamstime.com/b/línea-gruesa-de-icono-caricatura-animal-perro-con-cara-corta-dibujo-en-fondo-blanco-165171464.jpg",
@@ -187,7 +194,7 @@ rootRouter.post("/", async (req, res) => {
     if (dog) res.status(201).send("Raza creada con exito en la base de datos");
     //
   } catch (error) {
-    return res.status(400).send(error.message);
+    return res.status(404).send(error.message);
   }
 });
 

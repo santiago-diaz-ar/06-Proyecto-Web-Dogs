@@ -2,14 +2,13 @@ import style from "./Detail.module.css";
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetail, clearDetail, clearDogs } from "../../reducer/actions";
+import { getDetail, clearDetail } from "../../reducer/actions";
 
 const Detail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(clearDogs());
     dispatch(getDetail(id));
     return () => dispatch(clearDetail());
   }, [dispatch, id]);

@@ -102,7 +102,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case ORDER_BY_NAME:
       const ordenarName =
         payload === "A-Z"
-          ? state.allDogs.sort((a, b) => {
+          ? state.dogs.sort((a, b) => {
               if (a.name > b.name) {
                 return 1; // retorna un valor positivo indicando que B sea antes que A
               }
@@ -111,7 +111,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
               }
               return 0; // no hay cambios
             })
-          : state.allDogs.sort((a, b) => {
+          : state.dogs.sort((a, b) => {
               if (a.name > b.name) {
                 return -1; // A antes que B
               }
@@ -129,7 +129,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case ORDER_BY_WEIGHT:
       const ordenarWeight =
         payload === "min_weight"
-          ? state.allDogs.sort((a, b) => {
+          ? state.dogs.sort((a, b) => {
               //parseInt para convertir a un numero entero
               if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
                 return 1; // B antes que A
@@ -139,7 +139,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
               }
               return 0; // NO HAY CAMBIOS
             })
-          : state.allDogs.sort((a, b) => {
+          : state.dogs.sort((a, b) => {
               if (parseInt(a.weight[1]) > parseInt(b.weight[1])) {
                 return -1; //A antes que B
               }

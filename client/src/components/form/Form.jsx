@@ -35,19 +35,10 @@ const Form = () => {
   });
 
   const handleChange = (event) => {
-    console.log(event.target.name === "name");
-    if (!event.target.name === "name") {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value, // se busca en que input esta escribiendo con la prop name del input, y se modifica el estado
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
-
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value, // se busca en que input esta escribiendo con la prop name del input, y se modifica el estado
+    });
     setErrors(
       validate({
         ...form,
@@ -70,11 +61,11 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const result = axios.post("http://localhost:3001/dogs", form);
-      console.log(result.exit);
+      //console.log(await result);
       setForm({
         name: "",
         max_height: "",
@@ -85,9 +76,9 @@ const Form = () => {
         image: "",
         temperaments: [],
       });
-      alert("creado");
+      if (result) alert("Raza creada con exito en la base de datos");
     } catch (error) {
-      alert(`error al crear perro en la base de datos${error}`);
+      alert("error al crear en base de datos" + error.message);
     }
   };
 
@@ -123,7 +114,7 @@ const Form = () => {
         name="name"
         value={form.name}
         onChange={handleChange}
-        placeholder="nombre del perro"
+        placeholder="Raza de perro"
         className={style.name}
       />
       {errors.name && <div>{errors.name}</div>}
@@ -135,6 +126,7 @@ const Form = () => {
         onChange={handleChange}
         placeholder="Altura max del perro(cmt)"
         className={style.alturaMax}
+        title="dato no correcto"
       />
       {errors.max_height && <div>{errors.max_height}</div>}
 
