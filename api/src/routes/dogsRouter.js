@@ -50,6 +50,9 @@ const dogAllDB = async () => {
 
 const dogDbApi = async () => {
   const dogsDb = await dogAllDB();
+  const recorro = dogsDb.map((e) => e.toJSON().id);
+  console.log(recorro);
+
   const dogsApi = await dogAllApi();
 
   const dogsAllDbApi = [...dogsDb, ...dogsApi];
@@ -196,6 +199,18 @@ rootRouter.post("/", async (req, res) => {
   } catch (error) {
     return res.status(404).send(error.message);
   }
+});
+
+//todo DELETE
+rootRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  const prueba = Dogs.destroy({
+    where: {
+      id: id,
+    },
+  });
+
+  (await prueba) > 0 ? res.send("exito") : res.send("fallo");
 });
 
 module.exports = rootRouter;
