@@ -23,7 +23,7 @@ const Card = ({ id, image, name, temperaments }) => {
         false
       ) : (
         <button onClick={borrar} className={style.borrar} title="eliminar">
-          X
+          x
         </button>
       )}
       <div className={style.cajas}>

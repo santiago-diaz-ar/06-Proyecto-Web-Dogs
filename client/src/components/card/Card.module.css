@@ -63,8 +63,8 @@
 }
 
 .borrar {
-  border-radius: 0.7em;
-  background-color: white;
+  border-radius: 0.6em;
+  background-color: coral;
   position: relative;
   left: 16.2rem;
   bottom: 11.2rem;
@@ -73,6 +73,5 @@
   font-size: 1.2rem;
 }
 .borrar:hover {
-  background-color: coral;
+  background-color: white;
 }
-
