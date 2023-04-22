@@ -26,11 +26,11 @@ const Detail = () => {
       </button>
 
       <h1 className={style.name}>{detail[0]?.name}</h1>
-      <img
+      {/* <img
         src={detail[0]?.image}
         className={style.image}
         alt="img no disponible"
-      />
+      /> */}
 
       <hr />
 

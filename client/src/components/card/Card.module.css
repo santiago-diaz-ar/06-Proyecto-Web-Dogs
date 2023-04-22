@@ -39,6 +39,7 @@
   width: 100%; /* o el ancho deseado del div */
   overflow: hidden;
   border-radius: 3rem;
+  align-items: center;
 }
 .cajas {
   background-color: rgba(210, 105, 30, 0.728);
@@ -60,3 +61,18 @@
 }
 .temper {
 }
+
+.borrar {
+  border-radius: 0.7em;
+  background-color: white;
+  position: relative;
+  left: 16.2rem;
+  bottom: 11.2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 1.2rem;
+}
+.borrar:hover {
+  background-color: coral;
+}
+

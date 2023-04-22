@@ -118,9 +118,9 @@ const Form = () => {
         onChange={handleChange}
         placeholder="Raza de perro"
         className={style.name}
-        maxlength="20"
-        pattern="[A-Za-z]+"
-        title="máximo de 20 letras y de tipo texto"
+        maxLength="25"
+        pattern="^[a-zA-Z\s]+$"
+        title="máximo de 25 letras y de tipo texto"
       />
       {errors.name && <div>{errors.name}</div>}
 
